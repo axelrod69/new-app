@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <filter id="Ellipse_10" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#ff6700"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_80" data-name="Group 80" transform="translate(-305 -735)">
+    <g transform="matrix(1, 0, 0, 1, 305, 735)" filter="url(#Ellipse_10)">
+      <circle id="Ellipse_10-2" data-name="Ellipse 10" cx="11" cy="11" r="11" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <path id="Icon_material-location-on" data-name="Icon material-location-on" d="M11.35,3A3.847,3.847,0,0,0,7.5,6.85C7.5,9.738,11.35,14,11.35,14S15.2,9.738,15.2,6.85A3.847,3.847,0,0,0,11.35,3Zm0,5.225A1.375,1.375,0,1,1,12.725,6.85,1.376,1.376,0,0,1,11.35,8.225Z" transform="translate(313.65 743.5)" fill="none" stroke="#ff6700" stroke-width="1"/>
+  </g>
+</svg>

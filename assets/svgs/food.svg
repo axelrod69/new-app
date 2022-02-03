@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80.04" height="82" viewBox="0 0 80.04 82">
+  <defs>
+    <filter id="Path_127" x="0" y="0" width="80.04" height="82" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feFlood flood-color="#d3207f"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_128" x="22.233" y="36.814" width="22.906" height="22.906" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur-2"/>
+      <feFlood flood-color="#d3207f"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_129" x="11.629" y="37.768" width="22.906" height="22.906" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur-3"/>
+      <feFlood flood-color="#d3207f"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_130" x="10.676" y="41.568" width="22.918" height="23.037" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur-4"/>
+      <feFlood flood-color="#d3207f"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_131" x="28.07" y="41.58" width="22.906" height="23.025" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur-5"/>
+      <feFlood flood-color="#d3207f"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Path_132" x="19.373" y="42.652" width="22.906" height="22.906" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur-6"/>
+      <feFlood flood-color="#d3207f"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="food" transform="translate(2.108 519.5)">
+    <g transform="matrix(1, 0, 0, 1, -2.11, -519.5)" filter="url(#Path_127)">
+      <path id="Path_127-2" data-name="Path 127" d="M36.939-511.845c-.62.31-.62.369.774,6.851.7,3.324,1.311,6.16,1.346,6.3l.048.274H36.153c-3.193.012-3.264.024-3.5.643a17.443,17.443,0,0,0,.048,4.527c.214.512.655.667,1.859.667h.929l.071,1.036c.155,2.264.572,11.974.512,12.033a2.885,2.885,0,0,1-.882-.131,27.962,27.962,0,0,0-5.516-.429c-4.432,0-6.779.477-9.519,1.918a16.514,16.514,0,0,0-8.793,12.939l-.071.739-.751.369a3.821,3.821,0,0,0-1,6.16,4.3,4.3,0,0,0,1.132.763c.608.25.631.274.774.905a8.022,8.022,0,0,0,1.656,3.11,7.869,7.869,0,0,0,2.859,1.847l.786.262,23.089.036L62.924-451l.274-.274c.226-.226.3-.465.357-1.049.06-.691,1.859-39.364,1.859-39.972,0-.226.083-.262.727-.322,1.2-.107,1.227-.155,1.275-2.669.048-2.3.012-2.55-.334-2.9-.238-.238-.453-.238-13.094-.238-12.152,0-12.867-.012-12.927-.214-.036-.107-.655-2.967-1.37-6.35s-1.37-6.291-1.442-6.469a1.023,1.023,0,0,0-.87-.548A1.4,1.4,0,0,0,36.939-511.845Zm28.594,16.286v.953H34.556v-1.906H65.533Zm-2.1,4.492c-.048.846-.465,9.758-.929,19.813l-.846,18.288-7.768.036c-4.277.012-7.78-.012-7.78-.06a1.329,1.329,0,0,1,.286-.381,7.29,7.29,0,0,0,1.549-3.241c.048-.226.214-.357.7-.56a3.884,3.884,0,0,0,2.228-4.11,3.7,3.7,0,0,0-.846-1.882l-.334-.429,1.1-.071a9.587,9.587,0,0,0,8.554-7.184,10.8,10.8,0,0,0,0-4.861,9.97,9.97,0,0,0-6.922-6.946,13.461,13.461,0,0,0-4.885.012,9.96,9.96,0,0,0-6.029,4.742,4.96,4.96,0,0,1-.465.81,4.844,4.844,0,0,1-.691-.405c-.357-.226-1-.584-1.43-.8l-.786-.393-.06-.715c-.036-.405-.179-3.253-.31-6.326s-.262-5.886-.3-6.231l-.06-.62h26.1ZM52.368-480.618a8.444,8.444,0,0,1,3.4,2.192,9.8,9.8,0,0,1,1.787,3.467,9.562,9.562,0,0,1-.06,3.586,7.713,7.713,0,0,1-7.863,5.79c-1.632-.119-1.716-.143-1.787-.655a24.813,24.813,0,0,0-1.2-3.991,17.139,17.139,0,0,0-3.312-4.873l-.679-.679.369-.763a7.877,7.877,0,0,1,6.017-4.408A9.408,9.408,0,0,1,52.368-480.618Zm-18.24,2.752A14.548,14.548,0,0,1,44.433-470.3a14.462,14.462,0,0,1,1.608,5.206l.071.512H13.23l.071-.691c.048-.369.2-1.168.346-1.763a14.5,14.5,0,0,1,12.867-11.009A49.436,49.436,0,0,1,34.127-477.866Zm13.987,15.548a1.958,1.958,0,0,1-.012,3.264l-.334.25-17.835.036c-11.854.024-17.978-.012-18.252-.083a2.227,2.227,0,0,1-1.311-1.37,1.979,1.979,0,0,1,.87-2.1c.369-.238.751-.238,18.431-.238C47.471-462.557,47.721-462.557,48.114-462.318Zm-2.121,5.6a4.806,4.806,0,0,1-1.12,2.109,4.7,4.7,0,0,1-2.955,1.585c-1.191.155-23.638.155-24.591,0a4.4,4.4,0,0,1-2.526-1.251,4.521,4.521,0,0,1-1.394-2.18l-.083-.381H29.66C40.049-456.838,45.994-456.79,45.994-456.719Z" transform="translate(2.11 519.5)" fill="#fafafa"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -2.11, -519.5)" filter="url(#Path_128)">
+      <path id="Path_128-2" data-name="Path 128" d="M195-202.047v.953h1.906V-203H195Z" transform="translate(-162.27 247.31)" fill="#fafafa"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -2.11, -519.5)" filter="url(#Path_129)">
+      <path id="Path_129-2" data-name="Path 129" d="M106-194.047v.953h1.906V-195H106Z" transform="translate(-83.87 240.27)" fill="#fafafa"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -2.11, -519.5)" filter="url(#Path_130)">
+      <path id="Path_130-2" data-name="Path 130" d="M98-162.075v1.013h1.918l-.036-.989-.036-.977-.917-.036L98-163.1Z" transform="translate(-76.82 212.17)" fill="#fafafa"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -2.11, -519.5)" filter="url(#Path_131)">
+      <path id="Path_131-2" data-name="Path 131" d="M244-161.987v1.013h1.906V-163H244Z" transform="translate(-205.43 212.08)" fill="#fafafa"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -2.11, -519.5)" filter="url(#Path_132)">
+      <path id="Path_132-2" data-name="Path 132" d="M171-153.047v.953h1.906V-154H171Z" transform="translate(-141.13 204.15)" fill="#fafafa"/>
+    </g>
+  </g>
+</svg>

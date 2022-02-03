@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <filter id="Mocktail" x="0" y="0" width="36" height="36" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feFlood flood-color="#ff9200"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Mocktail)">
+    <path id="Mocktail-2" data-name="Mocktail" d="M14.709,1.688A.989.989,0,0,0,14.01,0H.99a.989.989,0,0,0-.7,1.688L6.563,7.958v5.636H4.922A1.172,1.172,0,0,0,3.75,14.766.234.234,0,0,0,3.985,15h7.031a.234.234,0,0,0,.234-.234,1.172,1.172,0,0,0-1.172-1.172H8.438V7.958ZM13,1.406,11.6,2.813H3.406L2,1.406Z" transform="translate(10.5 7.5)" fill="#fff"/>
+  </g>
+</svg>
