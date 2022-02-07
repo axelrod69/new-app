@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
 
+import 'CustomFab.dart';
+
 class StoryScreen extends StatefulWidget {
   final List<Story>? stories;
 
@@ -20,7 +22,7 @@ class StoryScreen extends StatefulWidget {
 
 class _StoryScreenState extends State<StoryScreen>
     with SingleTickerProviderStateMixin {
-  final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
+  final GlobalKey<FabCircularMenuStateMy> fabKey = GlobalKey();
 
   PageController? _pageController;
   AnimationController? _animController;
@@ -70,7 +72,7 @@ class _StoryScreenState extends State<StoryScreen>
   Widget build(BuildContext context) {
     final Story story = widget.stories![_currentIndex];
     return Scaffold(
-      floatingActionButton: FabCircularMenu(
+      floatingActionButton: CustomFabCircularMenu(
         key: fabKey,
         // Cannot be `Alignment.center`
         alignment: Alignment.bottomRight,
@@ -80,6 +82,7 @@ class _StoryScreenState extends State<StoryScreen>
         fabSize: MediaQuery.of(context).size.width * 0.1,
         fabElevation: 8.0,
         fabIconBorder: CircleBorder(),
+
         // Also can use specific color based on wether
         // the menu is open or not:
         // fabOpenColor: Colors.white
@@ -96,8 +99,12 @@ class _StoryScreenState extends State<StoryScreen>
         fabCloseIcon: SvgPicture.asset("assets/svgs/sideBar.svg"),
         fabMargin: const EdgeInsets.all(16.0),
         animationDuration: const Duration(milliseconds: 800),
-        animationCurve: Curves.easeInOutCirc,
-        onDisplayChange: (isOpen) {},
+       // animationCurve: Curves.easeInOutCirc,
+       // animationCurve: Cubic(0.785, 0.135, 0.15, 0.86),
+        //animationCurve: Curves.,
+        onDisplayChange: (isOpen) {
+
+        },
 
         //  => isOpen
         //     ? () {

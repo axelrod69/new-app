@@ -28,9 +28,9 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.4.47
   outlined_text: ^1.0.1
   audioplayers: ^0.20.1
-  vibration: ^1.7.3
-  geolocator: ^8.0.5
-  geocoding: ^2.0.2
+
+
+
   google_maps_flutter: ^2.1.1
   location: ^4.2.0
 

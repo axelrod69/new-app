@@ -6,10 +6,13 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     
    <application
         android:label="new_app"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyAPTbuOEgynWiub7-kmIQKMS2aBgFfB7Io"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -18,8 +21,7 @@
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
 
-            <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyAPTbuOEgynWiub7-kmIQKMS2aBgFfB7Io"/>
+
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues

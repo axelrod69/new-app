@@ -6,6 +6,7 @@ import 'package:boozimba/app/widgets/customBtnTryNow.dart';
 import 'package:boozimba/app/widgets/customTextNoProperty.dart';
 import 'package:boozimba/app/widgets/customYellowText.dart';
 import 'package:bordered_text/bordered_text.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -22,9 +23,10 @@ class BookingDetailsView extends StatefulWidget {
 
 //Bookingflow 4-2
 class BookingDetailsViewState extends State<BookingDetailsView> {
-  // DateTime dateTime = DateTime.now();
-  // var day = DateFormat('EEEE').format(dateTime).substring(0, 2);
-  // DateTime date = DateTime(now.year, now.month, now.day);
+  final TextEditingController _controller = new TextEditingController();
+  var items = ['1.20', '2.20', '3.20', '4.20','5.20','6.20','7.20','8.20',
+    '1.20', '2.20', '3.20', '4.20','5.20','6.20','7.20','8.20' ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -338,6 +340,7 @@ class BookingDetailsViewState extends State<BookingDetailsView> {
                       ),
                       Center(
                         child: Container(
+
                             width: w * 0.3,
                             margin: EdgeInsets.only(right: 32),
                             decoration: BoxDecoration(
@@ -350,22 +353,73 @@ class BookingDetailsViewState extends State<BookingDetailsView> {
                                 width: 3,
                               ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12.0, vertical: 4),
-                              child: BorderedText(
-                                strokeWidth: 2.0,
-                                strokeColor: Colors.blue,
-                                child: Text(
+                            child:
+
+
+
+                            Padding(
+                              padding: EdgeInsets.only(left: 5.0),
+                              child: TextField(
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    letterSpacing: 2,
+                                    color: Colors.white,
+                                    fontFamily: "Segoe"),
+                                controller: _controller,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  suffixIcon: Container(
+
+                                    child:
+
+                                    PopupMenuButton<String>(
+                                      color: Colors.transparent,
+                                      icon: const Icon(Icons.arrow_drop_down,color: Colors.white,),
+                                      onSelected: (String value) {
+                                        _controller.text = value;
+                                      },
+
+                                      shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              width: 1,
+                                              color: Colors.white
+                                          ),
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0),
+
+
+                                        ),
+                                      ),
+                                      itemBuilder: (BuildContext context) {
+                                        return items
+                                            .map<PopupMenuItem<String>>((String value) {
+                                          return new PopupMenuItem(
+
+                                              child: new Text(value,style:TextStyle(
+                                                  fontSize: 15,
+                                                  letterSpacing: 2,
+                                                  color: Colors.white,
+                                                  fontFamily: "Segoe") ,), value: value);
+                                        }).toList();
+                                      },
+                                    ),
+
+
+                                  ),
+                                ),
+                              ),
+                            )
+                                /*Text(
                                   "2:30",
                                   style: TextStyle(
                                       fontSize: 32,
                                       letterSpacing: 2,
                                       color: Colors.white,
                                       fontFamily: "Segoe"),
-                                ),
-                              ),
-                            )),
+                                ),*/
+
+
+                        ),
                       ),
                     ],
                   ),

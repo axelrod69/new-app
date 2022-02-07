@@ -14,7 +14,7 @@ import 'package:roller_list/roller_list.dart';
 
 import '../controllers/slot_machine_controller.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:vibration/vibration.dart';
+
 
 class SlotMachineView extends StatefulWidget {
   @override
@@ -113,7 +113,7 @@ class _SlotMachineViewState extends State<SlotMachineView> {
   final middleRoller = GlobalKey<RollerListState>();
   final rightRoller = GlobalKey<RollerListState>();
   Timer? rotator;
-  Duration _ROTATION_DURATION = Duration(milliseconds: 100);
+  Duration _ROTATION_DURATION = Duration(milliseconds: 220);
 
   final _random = Random();
 
@@ -127,11 +127,12 @@ class _SlotMachineViewState extends State<SlotMachineView> {
   }
 
   void _rotateLeftRoller(_) {
-    final leftRotationTarget = _random.nextInt(3 * foodSlots.length);
+    print("left work"+_ROTATION_DURATION.toString());
+    final leftRotationTarget = _random.nextInt(4 * foodSlots.length);
     leftRoller.currentState!.smoothScrollToIndex(leftRotationTarget,
         duration: _ROTATION_DURATION, curve: Curves.linear);
     soundEffect();
-    Vibration.vibrate(duration: 100);
+   // Vibration.vibrate(duration: 100);
   }
 
   void _startRotatingMiddleRoller() {
@@ -143,7 +144,7 @@ class _SlotMachineViewState extends State<SlotMachineView> {
     middleRoller.currentState!.smoothScrollToIndex(middleRotationTarget,
         duration: _ROTATION_DURATION, curve: Curves.linear);
     soundEffect();
-    Vibration.vibrate(duration: 100);
+    //Vibration.vibrate(duration: 100);
   }
 
   void _startRotatingRightRoller() {
@@ -155,7 +156,7 @@ class _SlotMachineViewState extends State<SlotMachineView> {
     rightRoller.currentState!.smoothScrollToIndex(rightRotationTarget,
         duration: _ROTATION_DURATION, curve: Curves.linear);
     soundEffect();
-    Vibration.vibrate(duration: 100);
+    //Vibration.vibrate(duration: 100);
   }
 
   void _rotateRoller(_) {
@@ -172,16 +173,20 @@ class _SlotMachineViewState extends State<SlotMachineView> {
             .linear); //it is possible to select custom duration and curve for this animation
     rightRoller.currentState!.smoothScrollToIndex(rightRotationTarget,
         duration: _ROTATION_DURATION, curve: Curves.linear);
-    soundEffect();
-    Vibration.vibrate(duration: 100);
+    //soundEffect();
+    //Vibration.vibrate(duration: 100);
   }
 
   Future<AudioPlayer> soundEffect() async {
     AudioCache cache = new AudioCache();
+
     return await cache.play('slotMachineSound.mp3');
+    //return await cache.seek(Duration(milliseconds: 1200);
   }
 
   void _finishRotating() {
+
+    print("finished rotaing");
     rotator?.cancel();
   }
 

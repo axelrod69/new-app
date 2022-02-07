@@ -1,3 +1,4 @@
+import 'package:boozimba/app/modules/Details/views/detail_view.dart';
 import 'package:boozimba/app/utils/signIn_signUp.dart';
 import 'package:boozimba/app/widgets/customTextNoProperty.dart';
 import 'package:flutter/cupertino.dart';
@@ -91,9 +92,17 @@ class _SignInViewState extends State<SignInView> {
                   SizedBox(
                     width: w * 0.05,
                   ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 5),
-                    child: CustomGreenText("Sign In", PrimaryColor, textScale),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  HomeDetailsView()),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 5),
+                      child: CustomGreenText("Sign In", PrimaryColor, textScale),
+                    ),
                   ),
                 ],
               ),
@@ -187,7 +196,9 @@ class _SignInViewState extends State<SignInView> {
                 alignment: Alignment.center,
                 child: CustomPaint(
                   painter: MyPinkPainter(),
-                  child: CustomButtom(CustomTextNoProperty('Sign In')),
+                  child: CustomButtom(
+
+                      CustomTextNoProperty('Sign In')),
                 ),
               ),
               Container(
@@ -248,6 +259,7 @@ class _SignInViewState extends State<SignInView> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ImageShadow(
+
                       Image.asset("assets/icons/google.png"),
                     ),
                     ImageShadow(

@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:boozimba/app/utils/signIn_signUp.dart';
-import 'package:geolocator/geolocator.dart';
+
 
 //16.png
 class BookingView extends StatefulWidget {
