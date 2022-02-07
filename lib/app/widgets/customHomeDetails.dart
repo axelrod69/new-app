@@ -28,9 +28,8 @@ class CustomHomeDetails extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: h * 0.58,
-                color: Colors.red,
+              SizedBox(
+                height: h * 0.5,
               ),
               // SizedBox(
               //   height: h * 0.58,
@@ -84,7 +83,7 @@ class CustomHomeDetails extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                color: Colors.red,
+                // color: Colors.red,
                 child: Padding(
                   padding: EdgeInsets.only(bottom: w * 0.02),
                   child: Row(

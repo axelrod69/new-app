@@ -69,15 +69,19 @@ class _StoryScreenState extends State<StoryScreen>
   @override
   Widget build(BuildContext context) {
     final Story story = widget.stories![_currentIndex];
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       floatingActionButton: FabCircularMenu(
         key: fabKey,
         // Cannot be `Alignment.center`
         alignment: Alignment.bottomRight,
-        ringColor: Colors.white.withOpacity(0.1),
+        // ringColor: Colors.white.withOpacity(0.1),
+        ringColor: Colors.transparent,
         ringDiameter: 200.0,
         ringWidth: 50.0,
-        fabSize: MediaQuery.of(context).size.width * 0.1,
+        fabSize: MediaQuery.of(context).size.width * 0.12,
         fabElevation: 8.0,
         fabIconBorder: CircleBorder(),
         // Also can use specific color based on wether
@@ -86,17 +90,19 @@ class _StoryScreenState extends State<StoryScreen>
         // fabCloseColor: Colors.white
         // These properties take precedence over fabColor
         fabColor: Colors.white,
-        fabOpenIcon: SvgPicture.asset(
-          "assets/svgs/filter-icon.svg",
-          // width: MediaQuery.of(context).size.width * 0.05,
-          // height: MediaQuery.of(context).size.height * 0.06,
+        fabOpenIcon: Center(
+          child: SvgPicture.asset(
+            "assets/svgs/filter-icon.svg",
+            // width: MediaQuery.of(context).size.width * 0.05,
+            // height: MediaQuery.of(context).size.height * 0.06,
+          ),
         ),
         // Icon(Icons.menu, color: Colors.black),
 
         fabCloseIcon: SvgPicture.asset("assets/svgs/sideBar.svg"),
         fabMargin: const EdgeInsets.all(16.0),
-        animationDuration: const Duration(milliseconds: 800),
-        animationCurve: Curves.easeInOutCirc,
+        animationDuration: const Duration(milliseconds: 1000),
+        animationCurve: Curves.easeInOutBack,
         onDisplayChange: (isOpen) {},
 
         //  => isOpen
@@ -108,39 +114,69 @@ class _StoryScreenState extends State<StoryScreen>
         //       },
 
         children: <Widget>[
-          RawMaterialButton(
-            onPressed: () {
-              // _showSnackBar(context, "You pressed 1");
-            },
-            shape: CircleBorder(),
-            padding: const EdgeInsets.all(24.0),
-            child: SvgPicture.asset("assets/svgs/ll.svg"),
+          Padding(
+            padding: EdgeInsets.only(top: height * 0.04),
+            child: RawMaterialButton(
+              elevation: 5,
+              onPressed: () {
+                // _showSnackBar(context, "You pressed 1");
+              },
+              shape: CircleBorder(),
+              // padding: const EdgeInsets.all(10.0),
+              child:
+                  SvgPicture.asset("assets/svgs/ll.svg", height: 45, width: 45),
+            ),
           ),
-          RawMaterialButton(
-            onPressed: () {
-              // _showSnackBar(context, "You pressed 2");
-            },
-            shape: CircleBorder(),
-            padding: const EdgeInsets.all(24.0),
-            child: SvgPicture.asset("assets/svgs/filter-01.svg"),
+          Padding(
+            padding: EdgeInsets.only(top: height * 0.02),
+            child: RawMaterialButton(
+              onPressed: () {
+                // _showSnackBar(context, "You pressed 2");
+              },
+              shape: CircleBorder(),
+              // padding: const EdgeInsets.all(10.0),
+              elevation: 5,
+              child: SvgPicture.asset("assets/svgs/filter-01.svg",
+                  height: 50, width: 50),
+            ),
           ),
-          RawMaterialButton(
-            onPressed: () {
-              // _showSnackBar(context, "You pressed 3");
-            },
-            shape: CircleBorder(),
-            padding: const EdgeInsets.all(24.0),
-            child: SvgPicture.asset("assets/svgs/location.svg"),
+          Padding(
+            padding: EdgeInsets.only(left: width * 0.04, top: height * 0.005),
+            child: RawMaterialButton(
+              onPressed: () {
+                // _showSnackBar(context, "You pressed 3");
+              },
+              shape: CircleBorder(),
+              // padding: const EdgeInsets.all(10.0),
+              elevation: 5,
+              child: SvgPicture.asset("assets/svgs/location.svg",
+                  height: 50, width: 50),
+            ),
           ),
-          RawMaterialButton(
-            onPressed: () {
-              // _showSnackBar(
-              // context, "You pressed 4. This one closes the menu on tap");
-              fabKey.currentState!.close();
-            },
-            shape: CircleBorder(),
-            padding: const EdgeInsets.all(24.0),
-            child: SvgPicture.asset("assets/svgs/heart.svg"),
+          Padding(
+            padding: EdgeInsets.only(left: width * 0.08, top: height * 0.015),
+            child: RawMaterialButton(
+              onPressed: () {
+                // _showSnackBar(
+                // context, "You pressed 4. This one closes the menu on tap");
+                // fabKey.currentState!.close();
+                setState(() {
+                  _isButtonPreesd = !_isButtonPreesd;
+                });
+              },
+              shape: CircleBorder(),
+              // padding: const EdgeInsets.all(10.0),
+              elevation: 5,
+              child: !_isButtonPreesd
+                  ? SvgPicture.asset("assets/svgs/heart.svg",
+                      height: 45, width: 45)
+                  : IconButton(
+                      onPressed: () => setState(() {
+                        _isButtonPreesd = !_isButtonPreesd;
+                      }),
+                      icon: Icon(Icons.favorite, color: Colors.red),
+                    ),
+            ),
           )
         ],
       ),

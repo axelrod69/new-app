@@ -25,6 +25,8 @@ abstract class Routes {
   static const SLOT_MACHINE = _Paths.SLOT_MACHINE;
   static const CUSTOM_CALENDAR = _Paths.CUSTOM_CALENDAR;
   static const GOOGLE_MAP = _Paths.GOOGLE_MAP;
+  static const PROFILE_PAGE = _Paths.PROFILE_PAGE;
+  static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
 }
 
 abstract class _Paths {
@@ -49,4 +51,6 @@ abstract class _Paths {
   static const SLOT_MACHINE = '/slot-machine';
   static const CUSTOM_CALENDAR = '/custom-calendar';
   static const GOOGLE_MAP = '/google-map';
+  static const PROFILE_PAGE = '/profile-page';
+  static const FORGOT_PASSWORD = '/forgot-password';
 }

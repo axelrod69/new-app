@@ -15,7 +15,7 @@ class CustomRatingBar extends StatelessWidget {
       allowHalfRating: true,
       itemCount: 5,
       itemSize: 16,
-      glowColor: Colors.white,
+      glowColor: Colors.purple,
       glow: true,
       ratingWidget: RatingWidget(
           full: Icon(

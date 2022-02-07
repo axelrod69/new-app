@@ -123,6 +123,34 @@ class _BookingViewState extends State<BookingView> {
     );
   }
 
+  Widget _buildOption(Widget icon, Color iconColor) {
+    return AnimatedSwitcher(
+        duration: Duration(milliseconds: 300),
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return RotationTransition(child: child, turns: animation);
+        },
+        child: InkWell(
+          key: UniqueKey(),
+          child: Padding(
+              padding: EdgeInsets.all(8.0),
+              // padding: EdgeInsets.only(
+              //   top:
+              // ),
+              child: Container(
+                  height: 40.0,
+                  width: 40.0,
+                  // decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(25.0),
+                  //     color: iconColor),
+                  child: Center(child: icon))),
+          onTap: () {
+            setState(() {
+              opened = false;
+            });
+          },
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
@@ -155,132 +183,146 @@ class _BookingViewState extends State<BookingView> {
               children: [
                 Stack(
                   children: [
-                    // AnimatedPositioned(
-                    //     duration: Duration(milliseconds: 300),
-                    //     // right: opened
-                    //     //     ? MediaQuery.of(context).size.width / 2 - 40.0
-                    //     //     : (MediaQuery.of(context).size.width / 2) - 120.0,
-                    //     left: opened
-                    //         ? 0.0
-                    //         : MediaQuery.of(context).size.width * 0.29,
-                    //     top: opened
-                    //         ? 0.0
-                    //         : MediaQuery.of(context).size.height * 0.0,
-                    //     child: _buildOption(
-                    //         SvgPicture.asset("assets/svgs/home.svg"),
-                    //         Colors.purple)),
-                    // AnimatedPositioned(
-                    //     duration: Duration(milliseconds: 300),
-                    //     left: opened
-                    //         ? 0.0
-                    //         : MediaQuery.of(context).size.width * 0.24,
-                    //     top: opened
-                    //         ? 0.0
-                    //         : MediaQuery.of(context).size.height * 0.06,
-                    //     child: _buildOption(
-                    //         SvgPicture.asset("assets/svgs/search.svg"),
-                    //         Colors.green)),
-                    // AnimatedPositioned(
-                    //     duration: Duration(milliseconds: 300),
-                    //     left: opened
-                    //         ? 0.0
-                    //         : MediaQuery.of(context).size.width * 0.155,
-                    //     top: opened
-                    //         ? 0.0
-                    //         : MediaQuery.of(context).size.height * 0.11,
-                    //     child: _buildOption(
-                    //         SvgPicture.asset("assets/svgs/notification.svg"),
-                    //         Colors.green)),
-                    // AnimatedPositioned(
-                    //     duration: Duration(milliseconds: 300),
-                    //     left: opened
-                    //         ? 0.0
-                    //         : MediaQuery.of(context).size.width * 0.04,
-                    //     top: opened
-                    //         ? 0.0
-                    //         : MediaQuery.of(context).size.height * 0.147,
-                    //     child: _buildOption(
-                    //         SvgPicture.asset("assets/svgs/user.svg"),
-                    //         Colors.brown)),
-                    // Positioned(
-                    //   left: 0,
-                    //   top: 0,
-                    //   child: AnimatedSwitcher(
-                    //     duration: Duration(milliseconds: 200),
-                    //     transitionBuilder:
-                    //         (Widget child, Animation<double> animation) {
-                    //       return ScaleTransition(
-                    //           child: child, scale: animation);
-                    //     },
-                    //     child: opened
-                    //         ? InkWell(
-                    //             key: UniqueKey(),
-                    //             child: Stack(
-                    //               children: [
-                    //                 SvgPicture.asset(
-                    //                   "assets/svgs/logo-with-bg.svg",
-                    //                   // color: Colors.b,
-                    //                 ),
-                    //                 Padding(
-                    //                     padding: EdgeInsets.all(w * 0.04),
-                    //                     child: Image.asset(
-                    //                         "assets/icons/logo.png"))
-                    //               ],
-                    //             ),
-                    //             onTap: () {
-                    //               setState(() {
-                    //                 opened = false;
-                    //               });
-                    //             })
-                    //         : InkWell(
-                    //             key: UniqueKey(),
-                    //             child: Stack(
-                    //               children: [
-                    //                 SvgPicture.asset(
-                    //                   "assets/svgs/logo-with-bg.svg",
-                    //                   // color: Colors.b,
-                    //                 ),
-                    //                 Padding(
-                    //                     padding: EdgeInsets.all(w * 0.04),
-                    //                     child: Image.asset(
-                    //                         "assets/icons/logo.png"))
-                    //               ],
-                    //             ),
-                    //             onTap: () {
-                    //               setState(() {
-                    //                 opened = true;
-                    //               });
-                    //             }),
-                    //   ),
-                    // ),
+                    AnimatedPositioned(
+                        duration: Duration(milliseconds: 300),
+                        // right: opened
+                        //     ? MediaQuery.of(context).size.width / 2 - 40.0
+                        //     : (MediaQuery.of(context).size.width / 2) - 120.0,
+                        left: opened
+                            ? 0.0
+                            : MediaQuery.of(context).size.width * 0.23,
+                        top: opened
+                            ? 0.0
+                            : MediaQuery.of(context).size.height * 0.0,
+                        child: _buildOption(
+                            SvgPicture.asset("assets/svgs/home.svg"),
+                            Colors.purple)),
+                    AnimatedPositioned(
+                        duration: Duration(milliseconds: 300),
+                        left: opened
+                            ? 0.0
+                            : MediaQuery.of(context).size.width * 0.18,
+                        top: opened
+                            ? 0.0
+                            : MediaQuery.of(context).size.height * 0.05,
+                        child: _buildOption(
+                            SvgPicture.asset("assets/svgs/search.svg"),
+                            Colors.green)),
+                    AnimatedPositioned(
+                        duration: Duration(milliseconds: 300),
+                        left: opened
+                            ? 0.0
+                            // : MediaQuery.of(context).size.width * 0.155,
+                            : MediaQuery.of(context).size.width * 0.1,
+                        top: opened
+                            ? 0.0
+                            // : MediaQuery.of(context).size.height * 0.11,
+                            : MediaQuery.of(context).size.height * 0.085,
+                        child: _buildOption(
+                            SvgPicture.asset("assets/svgs/notification.svg"),
+                            Colors.green)),
+                    AnimatedPositioned(
+                        duration: Duration(milliseconds: 300),
+                        left: opened
+                            ? 0.0
+                            : MediaQuery.of(context).size.width * 0.015,
+                        top: opened
+                            ? 0.0
+                            // : MediaQuery.of(context).size.height * 0.147,
+                            : MediaQuery.of(context).size.height * 0.112,
+                        child: _buildOption(
+                            SvgPicture.asset("assets/svgs/user.svg"),
+                            Colors.brown)),
+                    Positioned(
+                      left: 0,
+                      top: 0,
+                      child: AnimatedSwitcher(
+                        duration: Duration(milliseconds: 200),
+                        transitionBuilder:
+                            (Widget child, Animation<double> animation) {
+                          return ScaleTransition(
+                              child: child, scale: animation);
+                        },
+                        child: opened
+                            // ? InkWell(
+                            //     key: UniqueKey(),
+                            //     child: Stack(
+                            //       children: [
+                            //         SvgPicture.asset(
+                            //           "assets/svgs/logo-with-bg.svg",
+                            //           // color: Colors.b,
+                            //         ),
+                            //         Padding(
+                            //             padding: EdgeInsets.all(w * 0.04),
+                            //             child: Image.asset(
+                            //                 "assets/icons/logo.png"))
+                            //       ],
+                            //     ),
+                            //     onTap: () {
+                            //       setState(() {
+                            //         opened = false;
+                            //       });
+                            //     })
+                            ? InkWell(
+                                key: UniqueKey(),
+                                onTap: () => setState(() {
+                                  opened = false;
+                                }),
+                                child: Padding(
+                                  padding: EdgeInsets.all(w * 0.04),
+                                  child: Image.asset("assets/icons/logo.png"),
+                                ),
+                              )
+                            : InkWell(
+                                key: UniqueKey(),
+                                child: Stack(
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/svgs/round-bg.svg",
+                                      // color: Colors.b,
+                                    ),
+                                    Padding(
+                                        padding: EdgeInsets.all(w * 0.04),
+                                        child: Image.asset(
+                                            "assets/icons/logo.png"))
+                                  ],
+                                ),
+                                onTap: () {
+                                  setState(() {
+                                    opened = true;
+                                  });
+                                }),
+                      ),
+                    ),
                     // InkWell(
                     //   onTap: () => Get.toNamed("/slot-machine"),
                     //   child: Center(
                     //       child: SvgPicture.asset("assets/svgs/slot-icon.svg")),
                     // ),
-                    Positioned(
-                      top: h * 0.02,
-                      left: w * 0.01,
-                      child: Container(
-                        height: h * 0.045,
-                        width: w * 0.1,
-                        padding: EdgeInsets.only(left: 5),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 1),
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(6),
-                                topRight: Radius.circular(6),
-                                bottomLeft: Radius.circular(6),
-                                bottomRight: Radius.circular(6))),
-                        child: CustomPaint(
-                          painter: SignBoxPainter(),
-                          child:
-                              Icon(Icons.arrow_back_ios, //This here is the icon
-                                  color: Colors.white,
-                                  size: 15),
-                        ),
-                      ),
-                    ),
+
+                    // Positioned(
+                    //   top: h * 0.02,
+                    //   left: w * 0.01,
+                    //   child: Container(
+                    //     height: h * 0.045,
+                    //     width: w * 0.1,
+                    //     padding: EdgeInsets.only(left: 5),
+                    //     decoration: BoxDecoration(
+                    //         border: Border.all(color: Colors.white, width: 1),
+                    //         borderRadius: BorderRadius.only(
+                    //             topLeft: Radius.circular(6),
+                    //             topRight: Radius.circular(6),
+                    //             bottomLeft: Radius.circular(6),
+                    //             bottomRight: Radius.circular(6))),
+                    //     child: CustomPaint(
+                    //       painter: SignBoxPainter(),
+                    //       child:
+                    //           Icon(Icons.arrow_back_ios, //This here is the icon
+                    //               color: Colors.white,
+                    //               size: 15),
+                    //     ),
+                    //   ),
+                    // ),
                     Positioned(
                       top: h * 0.12,
                       left: w * 0,
@@ -892,31 +934,6 @@ class _BookingViewState extends State<BookingView> {
         ),
       ),
     );
-  }
-
-  Widget _buildOption(Widget icon, Color iconColor) {
-    return AnimatedSwitcher(
-        duration: Duration(milliseconds: 300),
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return RotationTransition(child: child, turns: animation);
-        },
-        child: InkWell(
-          key: UniqueKey(),
-          child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Container(
-                  height: 40.0,
-                  width: 40.0,
-                  // decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(25.0),
-                  //     color: iconColor),
-                  child: Center(child: icon))),
-          onTap: () {
-            setState(() {
-              opened = false;
-            });
-          },
-        ));
   }
 }
 

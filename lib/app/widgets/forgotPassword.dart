@@ -1,53 +1,30 @@
+import 'package:boozimba/app/utils/CustomColors.dart';
+import 'package:boozimba/app/utils/myCirclePainter.dart';
 import 'package:boozimba/app/utils/signIn_signUp.dart';
-import 'package:boozimba/app/widgets/customTextNoProperty.dart';
-import 'package:flutter/cupertino.dart';
-
-import 'package:flutter_svg/svg.dart';
-
-import 'package:flutter/material.dart';
-import 'package:boozimba/app/widgets/customTextWidget.dart';
-import 'package:boozimba/app/utils/myPinkPainter.dart';
-
 import 'package:boozimba/app/widgets/customButton.dart';
 import 'package:boozimba/app/widgets/customImageShadow.dart';
 import 'package:boozimba/app/widgets/customTextFieldSignIn.dart';
+import 'package:boozimba/app/widgets/customTextNoProperty.dart';
+import 'package:boozimba/app/widgets/customTextWidget.dart';
 import 'package:boozimba/app/widgets/greenTextWidget.dart';
-import 'package:boozimba/app/utils/CustomColors.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../widgets/forgotPassword.dart';
 
-class SignInView extends StatefulWidget {
-  @override
-  State<SignInView> createState() => _SignInViewState();
-  final bool isClicked;
-
-  SignInView(this.isClicked);
+class ForgotPassword extends StatefulWidget {
+  ForgotPasswordState createState() => ForgotPasswordState();
 }
 
-class _SignInViewState extends State<SignInView> {
-  bool _isValidEmail(email) {
-    bool emailValid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(email);
-    return emailValid;
-  }
-
-  bool opened = true;
-
-  // bool _passwordVisible = false;
-  bool _passwordVisible = true;
-
+class ForgotPasswordState extends State<ForgotPassword> {
   @override
   Widget build(BuildContext context) {
-    var w = MediaQuery.of(context).size.width;
-    var h = MediaQuery.of(context).size.height;
-    var textScale = MediaQuery.of(context).textScaleFactor * 1.5;
+    final h = MediaQuery.of(context).size.height;
+    final w = MediaQuery.of(context).size.width;
+    final textScale = MediaQuery.of(context).textScaleFactor * 1.5;
+    bool _isClicked = false;
+    bool _passwordVisible = true;
 
+    // TODO: implement build
     return Scaffold(
-        // appBar: AppBar(
-        //   // title: Text('Appbar'),
-        //   backgroundColor: Colors.transparent,
-        // ),
         body: Container(
       height: h,
       decoration: BoxDecoration(
@@ -68,27 +45,24 @@ class _SignInViewState extends State<SignInView> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //This is the customized widget meant to work as the back button
-                  widget.isClicked
-                      ? Container(
-                          height: 30,
-                          width: 35,
-                          padding: EdgeInsets.only(left: 5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white, width: 1),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(6),
-                                  topRight: Radius.circular(6),
-                                  bottomLeft: Radius.circular(6),
-                                  bottomRight: Radius.circular(6))),
-                          child: CustomPaint(
-                            painter: SignBoxPainter(),
-                            child: Icon(
-                                Icons.arrow_back_ios, //This here is the icon
-                                color: Colors.white,
-                                size: 15),
-                          ),
-                        )
-                      : SizedBox(),
+                  Container(
+                    height: 30,
+                    width: 35,
+                    padding: EdgeInsets.only(left: 5),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white, width: 1),
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(6),
+                            topRight: Radius.circular(6),
+                            bottomLeft: Radius.circular(6),
+                            bottomRight: Radius.circular(6))),
+                    child: CustomPaint(
+                      painter: SignBoxPainter(),
+                      child: Icon(Icons.arrow_back_ios, //This here is the icon
+                          color: Colors.white,
+                          size: 15),
+                    ),
+                  ),
                   SizedBox(
                     width: w * 0.05,
                   ),
@@ -170,18 +144,15 @@ class _SignInViewState extends State<SignInView> {
               Container(
                 alignment: Alignment.bottomRight,
                 margin: EdgeInsets.only(right: 22, bottom: 12, top: 6),
-                child: InkWell(
-                  onTap: () => Get.toNamed('/forgot-password'),
-                  child: Text(
-                    "Forgot Password?",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                        color: PrimaryAccentColor,
-                        fontFamily: "Segoe",
-                        fontWeight: FontWeight.w100,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 15 + textScale),
-                  ),
+                child: Text(
+                  "Forgot Password?",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                      color: PrimaryAccentColor,
+                      fontFamily: "Segoe",
+                      fontWeight: FontWeight.w100,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 15 + textScale),
                 ),
               ),
               SizedBox(
@@ -276,30 +247,5 @@ class _SignInViewState extends State<SignInView> {
         ],
       ),
     ));
-  }
-
-  Widget _buildOption(Widget icon, Color iconColor) {
-    return AnimatedSwitcher(
-        duration: Duration(milliseconds: 300),
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return RotationTransition(child: child, turns: animation);
-        },
-        child: InkWell(
-          key: UniqueKey(),
-          child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Container(
-                  height: 40.0,
-                  width: 40.0,
-                  // decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(25.0),
-                  //     color: iconColor),
-                  child: Center(child: icon))),
-          onTap: () {
-            setState(() {
-              opened = false;
-            });
-          },
-        ));
   }
 }

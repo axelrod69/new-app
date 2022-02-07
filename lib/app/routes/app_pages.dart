@@ -1,4 +1,6 @@
 import 'package:boozimba/app/modules/google_map.dart';
+import 'package:boozimba/app/widgets/forgotPassword.dart';
+import 'package:boozimba/app/widgets/profile_page.dart';
 import 'package:get/get.dart';
 
 import 'package:boozimba/app/modules/Details/bindings/details_binding.dart';
@@ -48,7 +50,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME_DETAILS;
+  static const INITIAL = Routes.HOME;
   // static const INITIAL = Routes.BOOKING_DETAILS;
 
   static final routes = [
@@ -67,11 +69,11 @@ class AppPages {
       page: () => HomeDetailsView(),
       binding: DetailsBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.HOTEL_DETAILS,
-    //   page: () => HotelDetailsView(),
-    //   binding: HotelDetailsBinding(),
-    // ),
+    GetPage(
+      name: _Paths.HOTEL_DETAILS,
+      page: () => HotelDetailsView(),
+      binding: HotelDetailsBinding(),
+    ),
     GetPage(
       name: _Paths.SIGN_IN,
       page: () => SignInView(true),
@@ -152,6 +154,14 @@ class AppPages {
       page: () => CustomCalendarView(),
       binding: CustomCalendarBinding(),
     ),
-    GetPage(name: _Paths.GOOGLE_MAP, page: () => GoogleMapScreen())
+    GetPage(name: _Paths.GOOGLE_MAP, page: () => GoogleMapScreen()),
+    GetPage(
+      name: _Paths.PROFILE_PAGE,
+      page: () => ProfilePage(),
+    ),
+    GetPage(
+      name: _Paths.FORGOT_PASSWORD,
+      page: () => ForgotPassword(),
+    )
   ];
 }
