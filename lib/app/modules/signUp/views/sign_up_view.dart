@@ -185,10 +185,9 @@ class SignUpView extends GetView<SignUpController> {
                           //     child: CustomTextNoProperty(
                           //       "Sign Up",
                           //     )),
-                          InkWell(
-                        onTap: () => Get.toNamed("/home"),
-                        child: CustomTextNoProperty('Sign Up'),
-                      )),
+
+                          CustomTextNoProperty('Sign Up'),
+                          '/home'),
                     ),
                   ),
                   Container(

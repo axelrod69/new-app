@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomButtom extends StatefulWidget {
-  CustomButtomState createState() => CustomButtomState();
+class LogOutButtonClick extends StatefulWidget {
+  LogOutButtonClickState createState() => LogOutButtonClickState();
 
   final Widget widgetChild;
-  final String route;
-
-  CustomButtom(this.widgetChild, this.route);
+  LogOutButtonClick(this.widgetChild);
 }
 
-class CustomButtomState extends State<CustomButtom>
+class LogOutButtonClickState extends State<LogOutButtonClick>
     with SingleTickerProviderStateMixin {
   bool isZoom = false;
   late AnimationController _animationController;
@@ -30,13 +28,6 @@ class CustomButtomState extends State<CustomButtom>
     super.initState();
   }
 
-  // @override
-  // void dispose() {
-  //   // TODO: implement dispose
-  //   _animationController.dispose();
-  //   super.dispose();
-  // }
-
   OnTapCancel() {
     _animationController.reverse();
   }
@@ -55,6 +46,7 @@ class CustomButtomState extends State<CustomButtom>
     var h = MediaQuery.of(context).size.height;
     var scale = 1 + _animationController.value;
 
+    // TODO: implement build
     return GestureDetector(
       onTap: () {
         if (isZoom) {
@@ -73,7 +65,7 @@ class CustomButtomState extends State<CustomButtom>
         scale: scale,
         child: Container(
           child: widget.widgetChild,
-          width: w * 0.30,
+          width: w * 0.45,
           height: h * 0.06,
           alignment: Alignment.center,
           decoration: BoxDecoration(

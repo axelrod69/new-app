@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:boozimba/app/modules/booking/view/booking_details_view.dart';
 import 'package:boozimba/app/utils/CustomColors.dart';
+import 'package:boozimba/app/utils/myCustomPainter.dart';
 import 'package:boozimba/app/widgets/customBookNowView.dart';
+import 'package:boozimba/app/widgets/customBtnTryNow.dart';
 import 'package:boozimba/app/widgets/customRatingBar.dart';
 import 'package:boozimba/app/widgets/customTextNoProperty.dart';
 import 'package:boozimba/app/widgets/customYellowText.dart';
@@ -183,146 +185,146 @@ class _BookingViewState extends State<BookingView> {
               children: [
                 Stack(
                   children: [
-                    AnimatedPositioned(
-                        duration: Duration(milliseconds: 300),
-                        // right: opened
-                        //     ? MediaQuery.of(context).size.width / 2 - 40.0
-                        //     : (MediaQuery.of(context).size.width / 2) - 120.0,
-                        left: opened
-                            ? 0.0
-                            : MediaQuery.of(context).size.width * 0.23,
-                        top: opened
-                            ? 0.0
-                            : MediaQuery.of(context).size.height * 0.0,
-                        child: _buildOption(
-                            SvgPicture.asset("assets/svgs/home.svg"),
-                            Colors.purple)),
-                    AnimatedPositioned(
-                        duration: Duration(milliseconds: 300),
-                        left: opened
-                            ? 0.0
-                            : MediaQuery.of(context).size.width * 0.18,
-                        top: opened
-                            ? 0.0
-                            : MediaQuery.of(context).size.height * 0.05,
-                        child: _buildOption(
-                            SvgPicture.asset("assets/svgs/search.svg"),
-                            Colors.green)),
-                    AnimatedPositioned(
-                        duration: Duration(milliseconds: 300),
-                        left: opened
-                            ? 0.0
-                            // : MediaQuery.of(context).size.width * 0.155,
-                            : MediaQuery.of(context).size.width * 0.1,
-                        top: opened
-                            ? 0.0
-                            // : MediaQuery.of(context).size.height * 0.11,
-                            : MediaQuery.of(context).size.height * 0.085,
-                        child: _buildOption(
-                            SvgPicture.asset("assets/svgs/notification.svg"),
-                            Colors.green)),
-                    AnimatedPositioned(
-                        duration: Duration(milliseconds: 300),
-                        left: opened
-                            ? 0.0
-                            : MediaQuery.of(context).size.width * 0.015,
-                        top: opened
-                            ? 0.0
-                            // : MediaQuery.of(context).size.height * 0.147,
-                            : MediaQuery.of(context).size.height * 0.112,
-                        child: _buildOption(
-                            SvgPicture.asset("assets/svgs/user.svg"),
-                            Colors.brown)),
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: AnimatedSwitcher(
-                        duration: Duration(milliseconds: 200),
-                        transitionBuilder:
-                            (Widget child, Animation<double> animation) {
-                          return ScaleTransition(
-                              child: child, scale: animation);
-                        },
-                        child: opened
-                            // ? InkWell(
-                            //     key: UniqueKey(),
-                            //     child: Stack(
-                            //       children: [
-                            //         SvgPicture.asset(
-                            //           "assets/svgs/logo-with-bg.svg",
-                            //           // color: Colors.b,
-                            //         ),
-                            //         Padding(
-                            //             padding: EdgeInsets.all(w * 0.04),
-                            //             child: Image.asset(
-                            //                 "assets/icons/logo.png"))
-                            //       ],
-                            //     ),
-                            //     onTap: () {
-                            //       setState(() {
-                            //         opened = false;
-                            //       });
-                            //     })
-                            ? InkWell(
-                                key: UniqueKey(),
-                                onTap: () => setState(() {
-                                  opened = false;
-                                }),
-                                child: Padding(
-                                  padding: EdgeInsets.all(w * 0.04),
-                                  child: Image.asset("assets/icons/logo.png"),
-                                ),
-                              )
-                            : InkWell(
-                                key: UniqueKey(),
-                                child: Stack(
-                                  children: [
-                                    SvgPicture.asset(
-                                      "assets/svgs/round-bg.svg",
-                                      // color: Colors.b,
-                                    ),
-                                    Padding(
-                                        padding: EdgeInsets.all(w * 0.04),
-                                        child: Image.asset(
-                                            "assets/icons/logo.png"))
-                                  ],
-                                ),
-                                onTap: () {
-                                  setState(() {
-                                    opened = true;
-                                  });
-                                }),
-                      ),
-                    ),
+                    // AnimatedPositioned(
+                    //     duration: Duration(milliseconds: 300),
+                    //     // right: opened
+                    //     //     ? MediaQuery.of(context).size.width / 2 - 40.0
+                    //     //     : (MediaQuery.of(context).size.width / 2) - 120.0,
+                    //     left: opened
+                    //         ? 0.0
+                    //         : MediaQuery.of(context).size.width * 0.23,
+                    //     top: opened
+                    //         ? 0.0
+                    //         : MediaQuery.of(context).size.height * 0.0,
+                    //     child: _buildOption(
+                    //         SvgPicture.asset("assets/svgs/home.svg"),
+                    //         Colors.purple)),
+                    // AnimatedPositioned(
+                    //     duration: Duration(milliseconds: 300),
+                    //     left: opened
+                    //         ? 0.0
+                    //         : MediaQuery.of(context).size.width * 0.18,
+                    //     top: opened
+                    //         ? 0.0
+                    //         : MediaQuery.of(context).size.height * 0.05,
+                    //     child: _buildOption(
+                    //         SvgPicture.asset("assets/svgs/search.svg"),
+                    //         Colors.green)),
+                    // AnimatedPositioned(
+                    //     duration: Duration(milliseconds: 300),
+                    //     left: opened
+                    //         ? 0.0
+                    //         // : MediaQuery.of(context).size.width * 0.155,
+                    //         : MediaQuery.of(context).size.width * 0.1,
+                    //     top: opened
+                    //         ? 0.0
+                    //         // : MediaQuery.of(context).size.height * 0.11,
+                    //         : MediaQuery.of(context).size.height * 0.085,
+                    //     child: _buildOption(
+                    //         SvgPicture.asset("assets/svgs/notification.svg"),
+                    //         Colors.green)),
+                    // AnimatedPositioned(
+                    //     duration: Duration(milliseconds: 300),
+                    //     left: opened
+                    //         ? 0.0
+                    //         : MediaQuery.of(context).size.width * 0.015,
+                    //     top: opened
+                    //         ? 0.0
+                    //         // : MediaQuery.of(context).size.height * 0.147,
+                    //         : MediaQuery.of(context).size.height * 0.112,
+                    //     child: _buildOption(
+                    //         SvgPicture.asset("assets/svgs/user.svg"),
+                    //         Colors.brown)),
+                    // Positioned(
+                    //   left: 0,
+                    //   top: 0,
+                    //   child: AnimatedSwitcher(
+                    //     duration: Duration(milliseconds: 200),
+                    //     transitionBuilder:
+                    //         (Widget child, Animation<double> animation) {
+                    //       return ScaleTransition(
+                    //           child: child, scale: animation);
+                    //     },
+                    //     child: opened
+                    //         // ? InkWell(
+                    //         //     key: UniqueKey(),
+                    //         //     child: Stack(
+                    //         //       children: [
+                    //         //         SvgPicture.asset(
+                    //         //           "assets/svgs/logo-with-bg.svg",
+                    //         //           // color: Colors.b,
+                    //         //         ),
+                    //         //         Padding(
+                    //         //             padding: EdgeInsets.all(w * 0.04),
+                    //         //             child: Image.asset(
+                    //         //                 "assets/icons/logo.png"))
+                    //         //       ],
+                    //         //     ),
+                    //         //     onTap: () {
+                    //         //       setState(() {
+                    //         //         opened = false;
+                    //         //       });
+                    //         //     })
+                    //         ? InkWell(
+                    //             key: UniqueKey(),
+                    //             onTap: () => setState(() {
+                    //               opened = false;
+                    //             }),
+                    //             child: Padding(
+                    //               padding: EdgeInsets.all(w * 0.04),
+                    //               child: Image.asset("assets/icons/logo.png"),
+                    //             ),
+                    //           )
+                    //         : InkWell(
+                    //             key: UniqueKey(),
+                    //             child: Stack(
+                    //               children: [
+                    //                 SvgPicture.asset(
+                    //                   "assets/svgs/round-bg.svg",
+                    //                   // color: Colors.b,
+                    //                 ),
+                    //                 Padding(
+                    //                     padding: EdgeInsets.all(w * 0.04),
+                    //                     child: Image.asset(
+                    //                         "assets/icons/logo.png"))
+                    //               ],
+                    //             ),
+                    //             onTap: () {
+                    //               setState(() {
+                    //                 opened = true;
+                    //               });
+                    //             }),
+                    //   ),
+                    // ),
                     // InkWell(
                     //   onTap: () => Get.toNamed("/slot-machine"),
                     //   child: Center(
                     //       child: SvgPicture.asset("assets/svgs/slot-icon.svg")),
                     // ),
 
-                    // Positioned(
-                    //   top: h * 0.02,
-                    //   left: w * 0.01,
-                    //   child: Container(
-                    //     height: h * 0.045,
-                    //     width: w * 0.1,
-                    //     padding: EdgeInsets.only(left: 5),
-                    //     decoration: BoxDecoration(
-                    //         border: Border.all(color: Colors.white, width: 1),
-                    //         borderRadius: BorderRadius.only(
-                    //             topLeft: Radius.circular(6),
-                    //             topRight: Radius.circular(6),
-                    //             bottomLeft: Radius.circular(6),
-                    //             bottomRight: Radius.circular(6))),
-                    //     child: CustomPaint(
-                    //       painter: SignBoxPainter(),
-                    //       child:
-                    //           Icon(Icons.arrow_back_ios, //This here is the icon
-                    //               color: Colors.white,
-                    //               size: 15),
-                    //     ),
-                    //   ),
-                    // ),
+                    Positioned(
+                      top: h * 0.02,
+                      left: w * 0.01,
+                      child: Container(
+                        height: h * 0.045,
+                        width: w * 0.1,
+                        padding: EdgeInsets.only(left: 5),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 1),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(6),
+                                topRight: Radius.circular(6),
+                                bottomLeft: Radius.circular(6),
+                                bottomRight: Radius.circular(6))),
+                        child: CustomPaint(
+                          painter: SignBoxPainter(),
+                          child:
+                              Icon(Icons.arrow_back_ios, //This here is the icon
+                                  color: Colors.white,
+                                  size: 15),
+                        ),
+                      ),
+                    ),
                     Positioned(
                       top: h * 0.12,
                       left: w * 0,
@@ -335,18 +337,50 @@ class _BookingViewState extends State<BookingView> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(
-                                  Icons.local_bar,
-                                  size: w * 0.1,
-                                  color: Colors.white,
+                                Container(
+                                  decoration: BoxDecoration(boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.purple,
+                                        spreadRadius: 1,
+                                        blurRadius: 50,
+                                        offset: Offset(0, 2))
+                                  ]),
+                                  child: Icon(
+                                    Icons.local_bar,
+                                    size: w * 0.1,
+                                    color: Colors.white,
+                                  ),
                                 ),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                CustomTextNoProperty(
-                                  "Pallentesque",
-                                  fontSize: 32,
-                                )
+                                // CustomTextNoProperty(
+                                //   "Pallentesque",
+                                //   fontSize: 32,
+                                // )
+                                Text('Pallentesque',
+                                    textAlign:
+                                        TextAlign.center, //TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: "Segoe",
+                                        // fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 32,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.purple,
+                                              blurRadius: 50.0,
+                                              offset: Offset(0, 2)
+                                              //spreadRadius: 2.0,
+                                              ),
+                                        ]
+
+                                        //child: childWidget,
+                                        )
+
+                                    // ),
+                                    )
                               ],
                             ),
                             SizedBox(
@@ -913,6 +947,65 @@ class _BookingViewState extends State<BookingView> {
                           getRatingIndicator(60, 3),
                           getRatingIndicator(30, 2),
                           getRatingIndicator(0, 1),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 12.0, horizontal: 16),
+                            child: MyYellowText(
+                              "Post A Review",
+                              fontSize: 24,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                                vertical: 0.0, horizontal: 16),
+                            child: CustomPaint(
+                              painter: MyCustomPainter(PrimaryColor),
+                              child: CustomButtonTryNow(
+                                TextField(
+                                  maxLines: 5,
+                                  style: TextStyle(
+                                      color: PrimaryAccentColor,
+                                      fontFamily: "Segoe",
+                                      shadows: [
+                                        Shadow(
+                                          color: PrimaryColor,
+                                          blurRadius: 3.0,
+                                          //spreadRadius: 2.0,
+                                        ),
+                                      ]),
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      // contentPadding: EdgeInsets.all(12),
+                                      contentPadding: EdgeInsets.all(12),
+                                      labelStyle:
+                                          TextStyle(color: PrimaryColor)),
+                                ),
+                                height: 0.17,
+                                width: double.infinity,
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Post',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.red,
+                                              blurRadius: 20,
+                                              offset: Offset(0, 2))
+                                        ]),
+                                  ))
+                            ],
+                          ),
+                          SizedBox(height: h * 0.1)
                         ],
                       ),
                     ),

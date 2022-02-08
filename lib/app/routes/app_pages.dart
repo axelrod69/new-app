@@ -1,4 +1,5 @@
 import 'package:boozimba/app/modules/google_map.dart';
+import 'package:boozimba/app/widgets/custom_calendar..dart';
 import 'package:boozimba/app/widgets/forgotPassword.dart';
 import 'package:boozimba/app/widgets/profile_page.dart';
 import 'package:get/get.dart';
@@ -151,7 +152,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CUSTOM_CALENDAR,
-      page: () => CustomCalendarView(),
+      page: () => CustomCalender(),
       binding: CustomCalendarBinding(),
     ),
     GetPage(name: _Paths.GOOGLE_MAP, page: () => GoogleMapScreen()),

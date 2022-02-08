@@ -41,10 +41,10 @@ class _HomeTabViewState extends State<HomeTabView> {
         // mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Expanded(
-              child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: CustomHomeDetails())),
+          Padding(
+            padding: EdgeInsets.only(bottom: h * 0.03),
+            child: CustomHomeDetails(),
+          ),
         ],
       ),
     ));

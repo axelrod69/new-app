@@ -8,6 +8,7 @@ import '../utils/myPinkPainter.dart';
 import './customButton.dart';
 import './customTextNoProperty.dart';
 import './logOutButton.dart';
+import './logOutButtonClick.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePageState createState() => ProfilePageState();
@@ -367,7 +368,7 @@ class ProfilePageState extends State<ProfilePage> {
               // padding: EdgeInsets.only(left: width * 0.05, right: width * 0.05),
               child: CustomPaint(
                 painter: LogOutButton(),
-                child: CustomButtom(Row(
+                child: LogOutButtonClick(Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(Icons.logout_rounded, color: Colors.white),

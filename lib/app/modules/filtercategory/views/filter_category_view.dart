@@ -197,12 +197,12 @@ class _FilterCategoryViewState extends State<FilterCategoryView> {
               child: CustomPaint(
                 painter: MyPinkPainter(),
                 child: CustomButtom(
-                  TextButton(
-                      onPressed: () {},
-                      child: CustomTextNoProperty(
-                        "Apply Now",
-                      )),
-                ),
+                    TextButton(
+                        onPressed: () {},
+                        child: CustomTextNoProperty(
+                          "Apply Now",
+                        )),
+                    ''),
               ),
             ),
           ],

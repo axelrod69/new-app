@@ -191,7 +191,7 @@ class _SignInViewState extends State<SignInView> {
                 alignment: Alignment.center,
                 child: CustomPaint(
                   painter: MyPinkPainter(),
-                  child: CustomButtom(CustomTextNoProperty('Sign In')),
+                  child: CustomButtom(CustomTextNoProperty('Sign In'), '/home'),
                 ),
               ),
               Container(

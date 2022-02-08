@@ -66,6 +66,10 @@ class _StoryScreenState extends State<StoryScreen>
     super.dispose();
   }
 
+  // Future<void> _onSwipeDown(BuildContext context) async {
+  //   await Get.toNamed('/slot-machine');
+  // }
+
   @override
   Widget build(BuildContext context) {
     final Story story = widget.stories![_currentIndex];
@@ -84,34 +88,20 @@ class _StoryScreenState extends State<StoryScreen>
         fabSize: MediaQuery.of(context).size.width * 0.12,
         fabElevation: 8.0,
         fabIconBorder: CircleBorder(),
-        // Also can use specific color based on wether
-        // the menu is open or not:
-        // fabOpenColor: Colors.white
-        // fabCloseColor: Colors.white
-        // These properties take precedence over fabColor
         fabColor: Colors.white,
         fabOpenIcon: Center(
           child: SvgPicture.asset(
             "assets/svgs/filter-icon.svg",
-            // width: MediaQuery.of(context).size.width * 0.05,
-            // height: MediaQuery.of(context).size.height * 0.06,
           ),
         ),
-        // Icon(Icons.menu, color: Colors.black),
+        onDisplayChange: (isOpen) {
+          print(isOpen);
+        },
 
         fabCloseIcon: SvgPicture.asset("assets/svgs/sideBar.svg"),
         fabMargin: const EdgeInsets.all(16.0),
         animationDuration: const Duration(milliseconds: 1000),
         animationCurve: Curves.easeInOutBack,
-        onDisplayChange: (isOpen) {},
-
-        //  => isOpen
-        //     ? () {
-        //         _isButtonPreesd = true;
-        //       }
-        //     : () {
-        //         _isButtonPreesd = false;
-        //       },
 
         children: <Widget>[
           Padding(
@@ -137,7 +127,7 @@ class _StoryScreenState extends State<StoryScreen>
               // padding: const EdgeInsets.all(10.0),
               elevation: 5,
               child: SvgPicture.asset("assets/svgs/filter-01.svg",
-                  height: 50, width: 50),
+                  height: 45, width: 45),
             ),
           ),
           Padding(
@@ -150,7 +140,7 @@ class _StoryScreenState extends State<StoryScreen>
               // padding: const EdgeInsets.all(10.0),
               elevation: 5,
               child: SvgPicture.asset("assets/svgs/location.svg",
-                  height: 50, width: 50),
+                  height: 45, width: 45),
             ),
           ),
           Padding(
@@ -167,15 +157,17 @@ class _StoryScreenState extends State<StoryScreen>
               shape: CircleBorder(),
               // padding: const EdgeInsets.all(10.0),
               elevation: 5,
-              child: !_isButtonPreesd
-                  ? SvgPicture.asset("assets/svgs/heart.svg",
-                      height: 45, width: 45)
-                  : IconButton(
-                      onPressed: () => setState(() {
-                        _isButtonPreesd = !_isButtonPreesd;
-                      }),
-                      icon: Icon(Icons.favorite, color: Colors.red),
-                    ),
+              // child: !_isButtonPreesd
+              //     ? SvgPicture.asset("assets/svgs/heart.svg",
+              //         height: 45, width: 45)
+              //     : IconButton(
+              //         onPressed: () => setState(() {
+              //           _isButtonPreesd = !_isButtonPreesd;
+              //         }),
+              //         icon: Icon(Icons.favorite, color: Colors.red),
+              //       ),
+              child: SvgPicture.asset("assets/svgs/heart.svg",
+                  height: 45, width: 45),
             ),
           )
         ],
@@ -184,72 +176,91 @@ class _StoryScreenState extends State<StoryScreen>
       body:
 
           // fabKey.currentState!.open()
-          //     ? Stack(
-          //         fit: StackFit.expand,
-          //         children: [
-          //           Image.asset('assets/images/filter.png', fit: BoxFit.cover),
-          //           ClipRRect(
-          //             // Clip it cleanly.
-          //             child: BackdropFilter(
-          //               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          //               child: Container(),
-          //             ),
-          //           ),
-          //         ],
-          //       )
-          //     :
-
-          GestureDetector(
-        onTapDown: (details) => _onTapDown(details, story),
-        child: Stack(
-          children: <Widget>[
-            PageView.builder(
-              controller: _pageController,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: widget.stories!.length,
-              itemBuilder: (context, i) {
-                final Story story = widget.stories![i];
-
-                return HomeTabView(
-                  backgroundImagePath: story.url!,
-                );
-              },
-            ),
-            Positioned(
-              top: 40.0,
-              left: 10.0,
-              right: 10.0,
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: widget.stories!
-                        .asMap()
-                        .map((i, e) {
-                          return MapEntry(
-                            i,
-                            AnimatedBar(
-                              animController: _animController!,
-                              position: i,
-                              currentIndex: _currentIndex,
-                            ),
-                          );
-                        })
-                        .values
-                        .toList(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 1.5,
-                      vertical: 10.0,
+          fabKey.currentState!.isOpen
+              ? Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset('assets/images/filter.png', fit: BoxFit.cover),
+                    ClipRRect(
+                      // Clip it cleanly.
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                        child: Container(),
+                      ),
                     ),
-                    child: UserInfo(user: story.user!),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+                  ],
+                )
+              : Stack(
+                  children: [
+                    GestureDetector(
+                      onTapDown: (details) => _onTapDown(details, story),
+                      child: Stack(
+                        children: <Widget>[
+                          PageView.builder(
+                            controller: _pageController,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: widget.stories!.length,
+                            itemBuilder: (context, i) {
+                              final Story story = widget.stories![i];
+
+                              return HomeTabView(
+                                backgroundImagePath: story.url!,
+                              );
+                            },
+                          ),
+                          Positioned(
+                            top: 40.0,
+                            left: 10.0,
+                            right: 10.0,
+                            child: Column(
+                              children: <Widget>[
+                                Row(
+                                  children: widget.stories!
+                                      .asMap()
+                                      .map((i, e) {
+                                        return MapEntry(
+                                          i,
+                                          AnimatedBar(
+                                            animController: _animController!,
+                                            position: i,
+                                            currentIndex: _currentIndex,
+                                          ),
+                                        );
+                                      })
+                                      .values
+                                      .toList(),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 1.5,
+                                    vertical: 10.0,
+                                  ),
+                                  child: UserInfo(user: story.user!),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // InkWell(
+                    //   onTap: () => Get.toNamed("/slot-machine"),
+                    //   child: Center(child: SvgPicture.asset("assets/svgs/slot-icon.svg")),
+                    // ),
+                    Positioned(
+                      right: width * 0.02,
+                      child: Container(
+                        height: height * 0.2,
+                        width: width * 0.3,
+                        // color: Colors.red,
+                        child: InkWell(
+                            onTap: () => Get.toNamed("/slot-machine"),
+                            child:
+                                SvgPicture.asset('assets/svgs/slot-icon.svg')),
+                      ),
+                    )
+                  ],
+                ),
     );
   }
 

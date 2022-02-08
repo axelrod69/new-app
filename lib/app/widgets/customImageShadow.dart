@@ -9,12 +9,15 @@ class ImageShadow extends StatefulWidget {
 
 class ImageShadowState extends State<ImageShadow>
     with SingleTickerProviderStateMixin {
+  bool isZoom = false;
   late AnimationController _animationController;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    isZoom = true;
     _animationController = AnimationController(
         duration: Duration(milliseconds: 50),
         vsync: this,
@@ -63,6 +66,15 @@ class ImageShadowState extends State<ImageShadow>
       ),
     );*/
         GestureDetector(
+      onTap: () {
+        if (isZoom) {
+          _animationController.forward();
+          isZoom = false;
+        } else {
+          _animationController.reverse();
+          isZoom = true;
+        }
+      },
       onTapDown: OnTapDown,
       onTapUp: OnTapUp,
       onTapCancel: OnTapCancel,
