@@ -24,7 +24,7 @@ class BookingDetailsView extends StatefulWidget {
 //Bookingflow 4-2
 class BookingDetailsViewState extends State<BookingDetailsView> {
   final TextEditingController _controller = new TextEditingController();
-  var items = ['1.20', '2.20', '3.20', '4.20','5.20','6.20','7.20','8.20',
+  List<String> items = ['1.20', '2.20', '3.20', '4.20','5.20','6.20','7.20','8.20',
     '1.20', '2.20', '3.20', '4.20','5.20','6.20','7.20','8.20' ];
 
 
@@ -371,8 +371,8 @@ class BookingDetailsViewState extends State<BookingDetailsView> {
                                   suffixIcon: Container(
 
                                     child:
-//vhhvvhvjhjj
-                                    PopupMenuButton<String>(
+// dropdown + text(vikas edit)
+                                   /* PopupMenuButton<String>(
                                       color: Colors.transparent,
                                       icon: const Icon(Icons.arrow_drop_down,color: Colors.white,),
                                       onSelected: (String value) {
@@ -402,8 +402,37 @@ class BookingDetailsViewState extends State<BookingDetailsView> {
                                                   fontFamily: "Segoe") ,), value: value);
                                         }).toList();
                                       },
-                                    ),
+                                    ),*/
+                                    DropdownButtonHideUnderline(
 
+                                      child: DropdownButton(
+
+                                        //itemHeight:20,
+                                        menuMaxHeight: 150,
+                                        icon: const Icon(Icons.arrow_drop_down,color: Colors.white,),
+                                        items: items
+                                            .map((e) => DropdownMenuItem(
+                                          child: Container(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                              e,
+                                              style: TextStyle(fontSize: 18),
+                                            ),
+                                          ),
+                                          value: e,
+                                        ))
+                                            .toList(),
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            _controller.text = newValue!;
+                                          });
+                                        },
+                                        //value: _currency,
+                                        /*onSelected: (String value) {
+                                          _controller.text = value;
+                                        },*/
+                                      ),
+                                    ),
 
                                   ),
                                 ),
