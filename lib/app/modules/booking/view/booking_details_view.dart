@@ -25,6 +25,25 @@ class BookingDetailsViewState extends State<BookingDetailsView> {
   // DateTime dateTime = DateTime.now();
   // var day = DateFormat('EEEE').format(dateTime).substring(0, 2);
   // DateTime date = DateTime(now.year, now.month, now.day);
+  final TextEditingController _controller = new TextEditingController();
+  List<String> items = [
+    '1.20',
+    '2.20',
+    '3.20',
+    '4.20',
+    '5.20',
+    '6.20',
+    '7.20',
+    '8.20',
+    '1.20',
+    '2.20',
+    '3.20',
+    '4.20',
+    '5.20',
+    '6.20',
+    '7.20',
+    '8.20'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +127,23 @@ class BookingDetailsViewState extends State<BookingDetailsView> {
                     child: Stack(children: [
                       SfDateRangePicker(
                           yearCellStyle: DateRangePickerYearCellStyle(
+                            disabledDatesTextStyle:
+                                TextStyle(color: Colors.red),
+                            leadingDatesTextStyle: TextStyle(
+                                foreground: Paint()
+                                  ..color = Colors.white
+                                  ..style = PaintingStyle.fill
+                                  ..strokeWidth = 5
+                                  ..maskFilter =
+                                      MaskFilter.blur(BlurStyle.inner, 5),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                shadows: [
+                                  Shadow(
+                                      color: PrimaryBlue,
+                                      blurRadius: 6,
+                                      offset: Offset(0, 1))
+                                ]),
                             todayTextStyle: TextStyle(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -338,7 +374,8 @@ class BookingDetailsViewState extends State<BookingDetailsView> {
                       ),
                       Center(
                         child: Container(
-                            width: w * 0.3,
+                            width: w * 0.4,
+                            height: h * 0.08,
                             margin: EdgeInsets.only(right: 32),
                             decoration: BoxDecoration(
                               // color: Colors.green,
@@ -346,36 +383,150 @@ class BookingDetailsViewState extends State<BookingDetailsView> {
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
                                 style: BorderStyle.solid,
-                                color: PrimarySilver,
+                                color: Colors.green,
                                 width: 3,
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12.0, vertical: 4),
-                              child: BorderedText(
-                                strokeWidth: 2.0,
-                                strokeColor: Colors.blue,
-                                child: Text(
+                              padding: EdgeInsets.only(left: 5.0),
+                              child: TextField(
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    shadows: [
+                                      Shadow(
+                                          color: Colors.blueAccent,
+                                          blurRadius: 20,
+                                          offset: Offset(0, 2))
+                                    ],
+                                    letterSpacing: 2,
+                                    color: Colors.white,
+                                    fontFamily: "Segoe"),
+                                controller: _controller,
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  suffixIcon: Container(
+                                    child:
+// dropdown + text(vikas edit)
+                                        /* PopupMenuButton<String>(
+                                      color: Colors.transparent,
+                                      icon: const Icon(Icons.arrow_drop_down,color: Colors.white,),
+                                      onSelected: (String value) {
+                                        _controller.text = value;
+                                      },
+                                      shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              width: 1,
+                                              color: Colors.white
+                                          ),
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      itemBuilder: (BuildContext context) {
+                                        return items
+                                            .map<PopupMenuItem<String>>((String value) {
+                                          return new PopupMenuItem(
+                                              child: new Text(value,style:TextStyle(
+                                                  fontSize: 15,
+                                                  letterSpacing: 2,
+                                                  color: Colors.white,
+                                                  fontFamily: "Segoe") ,), value: value);
+                                        }).toList();
+                                      },
+                                    ),*/
+                                        DropdownButtonHideUnderline(
+                                      child: DropdownButton(
+                                        //itemHeight:20,
+                                        menuMaxHeight: 150,
+                                        icon: const Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Colors.white,
+                                        ),
+                                        items: items
+                                            .map((e) => DropdownMenuItem(
+                                                  child: Container(
+                                                    // decoration: BoxDecoration(
+                                                    //     color: Colors
+                                                    //         .transparent,
+                                                    //     // border: Border.all(
+                                                    //     //     color:
+                                                    //     //         Colors.white,
+                                                    //     //     width: 2)
+                                                    //     border: Border(
+                                                    //       left: BorderSide(
+                                                    //           color: Colors
+                                                    //               .white,
+                                                    //           width: 2),
+                                                    //       right: BorderSide(
+                                                    //           color: Colors
+                                                    //               .white,
+                                                    //           width: 2),
+                                                    //       // top: BorderSide(
+                                                    //       //     color: Colors
+                                                    //       //         .white,
+                                                    //       //     width: 2),
+                                                    //     )),
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: Text(
+                                                      e,
+                                                      style: TextStyle(
+                                                          // color: Colors.white,
+                                                          fontSize: 20),
+                                                    ),
+                                                  ),
+                                                  value: e,
+                                                ))
+                                            .toList(),
+                                        onChanged: (String? newValue) {
+                                          setState(() {
+                                            _controller.text = newValue!;
+                                          });
+                                        },
+                                        //value: _currency,
+                                        /*onSelected: (String value) {
+                                              _controller.text = value;
+                                            },*/
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                            /*Text(
                                   "2:30",
                                   style: TextStyle(
                                       fontSize: 32,
                                       letterSpacing: 2,
                                       color: Colors.white,
                                       fontFamily: "Segoe"),
-                                ),
-                              ),
-                            )),
+                                ),*/
+
+                            ),
                       ),
                     ],
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(bottom: 8.0, top: 40.0, left: 16),
-                    child: MyYellowText(
-                      "Available Members",
-                      fontSize: 24,
-                    ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(
+                  //       bottom: 8.0, top: 40.0, left: w * 0.016),
+                  // child: MyYellowText(
+                  //   "Available Members",
+                  //   fontSize: 24,
+                  // ),
+                  // ),
+                  SizedBox(height: h * 0.08),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: w * 0.05),
+                        child: MyYellowText(
+                          "Available Members",
+                          fontSize: 24,
+                        ),
+                      ),
+                    ],
                   ),
                   Container(
                     margin: EdgeInsets.all(12),

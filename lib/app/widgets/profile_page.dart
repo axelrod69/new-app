@@ -9,6 +9,7 @@ import './customButton.dart';
 import './customTextNoProperty.dart';
 import './logOutButton.dart';
 import './logOutButtonClick.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePageState createState() => ProfilePageState();
@@ -55,75 +56,91 @@ class ProfilePageState extends State<ProfilePage> {
                   'assets/images/logo-with-bg.png',
                 )),
                 Positioned(
-                  top: height * 0.075,
-                  left: width * 0.12,
+                  top: height * 0.052,
+                  left: width * 0.15,
                   child: Container(
-                    height: height * 0.15,
-                    width: width * 0.3,
+                    height: height * 0.16,
+                    width: width * 0.2,
                     // color: Colors.red,
+                    // padding: EdgeInsets.only(bottom: height * 0.0),
                     // padding: EdgeInsets.only(
                     //     left: width * 0.02, right: width * 0.02),
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      // crossAxisAlignment: CrossAxisAlignment.center,
+                    child: Stack(
                       children: [
-                        Stack(
-                          children: [
-                            Container(
-                              width: width * 0.2,
-                              height: height * 0.1,
-                              child: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 100,
-                              ),
-                              // decoration: BoxDecoration(
-                              //     color: Colors.white,
-                              //     borderRadius: BorderRadius.only(
-                              //         topLeft: Radius.circular(100),
-                              //         topRight: Radius.circular(100),
-                              //         bottomLeft: Radius.circular(100),
-                              //         bottomRight: Radius.circular(100))),
+                        Container(
+                          width: width * 0.2,
+                          height: height * 0.15,
+                          // color: Colors.yellow,
+                          // child: CircleAvatar(
+                          //   backgroundColor: Colors.white,
+                          //   radius: 100,
+                          // ),
+                          child: CircularPercentIndicator(
+                            radius: 92,
+                            percent: 0.7,
+                            progressColor: Colors.blue,
+                            lineWidth: 3,
+                            backgroundColor: Colors.transparent,
+                            center: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 85,
+                              backgroundImage: NetworkImage(
+                                  'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+                              // child: Image.network(
+                              //   'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                              //   fit: BoxFit.cover,
+                              // ),
                             ),
-                            Positioned(
-                              // top: height * 0.1,
-                              left: width * 0.12,
-                              bottom: height * 0.001,
-                              child: Container(
-                                height: height * 0.04,
-                                width: width * 0.08,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(73, 72, 73, 0.4),
-                                  borderRadius: BorderRadius.circular(100),
-                                ),
-                                child: Icon(Icons.camera_alt_rounded,
-                                    color: Colors.white),
-                              ),
-                            )
-                          ],
+                          ),
+                          // decoration: BoxDecoration(
+                          //     color: Colors.white,
+                          //     borderRadius: BorderRadius.only(
+                          //         topLeft: Radius.circular(100),
+                          //         topRight: Radius.circular(100),
+                          //         bottomLeft: Radius.circular(100),
+                          //         bottomRight: Radius.circular(100))),
                         ),
-                        Row(
-                          children: [
-                            Icon(Icons.upgrade, color: Colors.white),
-                            SizedBox(
-                              height: height * 0.05,
+                        Positioned(
+                          // top: height * 0.1,
+                          left: width * 0.12,
+                          bottom: height * 0.03,
+                          child: Container(
+                            height: height * 0.04,
+                            width: width * 0.08,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(73, 72, 73, 0.4),
+                              borderRadius: BorderRadius.circular(100),
                             ),
-                            Text(
-                              'Upgrade Now',
-                              textScaleFactor: textScale,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            )
-                          ],
+                            child: Icon(Icons.camera_alt_rounded,
+                                color: Colors.white),
+                          ),
                         )
                       ],
                     ),
                   ),
                 ),
                 Positioned(
+                    bottom: height * 0.02,
+                    left: width * 0.12,
+                    child: Row(
+                      children: [
+                        Icon(Icons.upgrade, color: Colors.white),
+                        SizedBox(
+                          height: height * 0.06,
+                        ),
+                        Text(
+                          'Upgrade Now',
+                          textScaleFactor: textScale,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
+                        )
+                      ],
+                    )),
+                Positioned(
                   top: height * 0.08,
-                  left: width * 0.38,
+                  left: width * 0.365,
                   child: Container(
                     width: width * 0.614,
                     height: height * 0.1,
@@ -149,13 +166,15 @@ class ProfilePageState extends State<ProfilePage> {
                                     ]),
                               ),
                               SvgPicture.asset('assets/svgs/silver.svg',
-                                  height: 25, width: 25, color: Colors.white),
+                                  height: 25,
+                                  width: 25,
+                                  color: Color.fromRGBO(220, 218, 218, 1)),
                               SvgPicture.asset('assets/svgs/gold.svg',
-                                  height: 25, width: 25, color: Colors.white),
+                                  height: 25, width: 25, color: Colors.yellow),
                               SvgPicture.asset('assets/svgs/diamond.svg',
-                                  height: 25, width: 25, color: Colors.white),
+                                  height: 25, width: 25, color: Colors.blue),
                               SvgPicture.asset('assets/svgs/platinum.svg',
-                                  height: 25, width: 25, color: Colors.white)
+                                  height: 25, width: 25, color: Colors.green)
                             ],
                           ),
                         ),

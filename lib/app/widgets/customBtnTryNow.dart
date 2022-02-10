@@ -10,15 +10,16 @@ class CustomButtonTryNow extends StatefulWidget {
 
 class CustomButtonTryNowState extends State<CustomButtonTryNow>
     with SingleTickerProviderStateMixin {
-  late double _scale;
-  late AnimationController _controller;
+  bool isZoom = false;
+  late AnimationController _animationController;
 
   @override
   void initState() {
     // TODO: implement initState
-    _controller = AnimationController(
-        vsync: this,
+    isZoom = true;
+    _animationController = AnimationController(
         duration: Duration(milliseconds: 10),
+        vsync: this,
         lowerBound: 0.0,
         upperBound: 0.1)
       ..addListener(() {
@@ -27,45 +28,92 @@ class CustomButtonTryNowState extends State<CustomButtonTryNow>
     super.initState();
   }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    _controller.dispose();
-    super.dispose();
+  OnTapCancel() {
+    _animationController.reverse();
   }
+
+  OnTapDown(TapDownDetails details) {
+    _animationController.forward();
+  }
+
+  OnTapUp(TapUpDetails details) {
+    _animationController.reverse();
+  }
+
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
-    _scale = 1 - _controller.value;
+    var scale = 1 + _animationController.value;
 
-    return Container(
-      width: w * widget.width,
-      height: h * widget.height,
-      alignment: Alignment.center,
-      child: GestureDetector(
-          onTapDown: _onTapDown,
-          onTapUp: _onTapUp,
-          child: Transform.scale(scale: _scale, child: widget.widgetChild)),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        //color: Colors.black,
-        shape: BoxShape.rectangle,
-        border: Border.all(
-          style: BorderStyle.solid,
-          color: Colors.white,
-          width: 1.5,
+    return GestureDetector(
+      onTap: () {
+        if (isZoom) {
+          _animationController.forward();
+          // Get.toNamed('/home');
+          isZoom = false;
+        } else {
+          _animationController.reverse();
+          isZoom = true;
+        }
+      },
+      onTapDown: OnTapDown,
+      onTapUp: OnTapUp,
+      onTapCancel: OnTapCancel,
+      child: Transform.scale(
+        scale: scale,
+        child: Container(
+          child: widget.widgetChild,
+          width: w * widget.width,
+          height: h * widget.height,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            //color: Colors.black,
+            shape: BoxShape.rectangle,
+            border: Border.all(
+              style: BorderStyle.solid,
+              color: Colors.white,
+              width: 1.5,
+            ),
+          ),
         ),
       ),
     );
+
+    // return Container(
+    // width: w * widget.width,
+    // height: h * widget.height,
+    //   alignment: Alignment.center,
+    //   child: GestureDetector(
+    //       onTapDown: _onTapDown,
+    //       onTapUp: _onTapUp,
+    //       child: Transform.scale(scale: _scale, child: widget.widgetChild)),
+    // decoration: BoxDecoration(
+    //   borderRadius: BorderRadius.circular(12),
+    //   //color: Colors.black,
+    //   shape: BoxShape.rectangle,
+    //   border: Border.all(
+    //     style: BorderStyle.solid,
+    //     color: Colors.white,
+    //     width: 1.5,
+    //   ),
+    // ),
+    // );
   }
 
-  void _onTapDown(TapDownDetails details) {
-    _controller.forward();
-  }
+  // void _onTapDown(TapDownDetails details) {
+  //   _controller.forward();
+  // }
 
-  void _onTapUp(TapUpDetails details) {
-    _controller.reverse();
-  }
+  // void _onTapUp(TapUpDetails details) {
+  //   _controller.reverse();
+  // }
 }

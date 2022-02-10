@@ -16,7 +16,7 @@ class OverViewView extends GetView<OverViewController> {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
-    final textScale = MediaQuery.of(context).textScaleFactor * 1.2;
+    // final textScale = MediaQuery.of(context).textScaleFactor * 1.2;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -49,6 +49,7 @@ class OverViewView extends GetView<OverViewController> {
                   Container(
                     width: w * 0.28,
                     height: h * 0.15,
+                    // color: Colors.red,
                   ),
                   Positioned(
                     child: Image.asset("assets/images/logo-with-bg.png"),

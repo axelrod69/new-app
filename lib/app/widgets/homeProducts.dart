@@ -76,6 +76,7 @@ class _StoryScreenState extends State<StoryScreen>
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
 
+    //Bottom Circular Menu
     return Scaffold(
       floatingActionButton: FabCircularMenu(
         key: fabKey,
@@ -83,8 +84,8 @@ class _StoryScreenState extends State<StoryScreen>
         alignment: Alignment.bottomRight,
         // ringColor: Colors.white.withOpacity(0.1),
         ringColor: Colors.transparent,
-        ringDiameter: 200.0,
-        ringWidth: 50.0,
+        ringDiameter: 250.0,
+        ringWidth: 60.0,
         fabSize: MediaQuery.of(context).size.width * 0.12,
         fabElevation: 8.0,
         fabIconBorder: CircleBorder(),
@@ -96,6 +97,11 @@ class _StoryScreenState extends State<StoryScreen>
         ),
         onDisplayChange: (isOpen) {
           print(isOpen);
+          if (!isOpen) {
+            _isOpen = true;
+          } else {
+            _isOpen = false;
+          }
         },
 
         fabCloseIcon: SvgPicture.asset("assets/svgs/sideBar.svg"),
@@ -127,9 +133,10 @@ class _StoryScreenState extends State<StoryScreen>
               // padding: const EdgeInsets.all(10.0),
               elevation: 5,
               child: SvgPicture.asset("assets/svgs/filter-01.svg",
-                  height: 45, width: 45),
+                  height: 50, width: 50),
             ),
           ),
+          // padding: EdgeInsets.only(left: width * 0.04, top: height * 0.005),
           Padding(
             padding: EdgeInsets.only(left: width * 0.04, top: height * 0.005),
             child: RawMaterialButton(
@@ -140,7 +147,7 @@ class _StoryScreenState extends State<StoryScreen>
               // padding: const EdgeInsets.all(10.0),
               elevation: 5,
               child: SvgPicture.asset("assets/svgs/location.svg",
-                  height: 45, width: 45),
+                  height: 50, width: 50),
             ),
           ),
           Padding(
@@ -172,95 +179,99 @@ class _StoryScreenState extends State<StoryScreen>
           )
         ],
       ),
+      //Bottom Circular Ends
       // backgroundColor: Colors.black,
       body:
 
-          // fabKey.currentState!.open()
-          fabKey.currentState!.isOpen
-              ? Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Image.asset('assets/images/filter.png', fit: BoxFit.cover),
-                    ClipRRect(
-                      // Clip it cleanly.
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                        child: Container(),
-                      ),
-                    ),
-                  ],
-                )
-              : Stack(
-                  children: [
-                    GestureDetector(
-                      onTapDown: (details) => _onTapDown(details, story),
-                      child: Stack(
-                        children: <Widget>[
-                          PageView.builder(
-                            controller: _pageController,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: widget.stories!.length,
-                            itemBuilder: (context, i) {
-                              final Story story = widget.stories![i];
 
-                              return HomeTabView(
-                                backgroundImagePath: story.url!,
-                              );
-                            },
-                          ),
-                          Positioned(
-                            top: 40.0,
-                            left: 10.0,
-                            right: 10.0,
-                            child: Column(
-                              children: <Widget>[
-                                Row(
-                                  children: widget.stories!
-                                      .asMap()
-                                      .map((i, e) {
-                                        return MapEntry(
-                                          i,
-                                          AnimatedBar(
-                                            animController: _animController!,
-                                            position: i,
-                                            currentIndex: _currentIndex,
-                                          ),
-                                        );
-                                      })
-                                      .values
-                                      .toList(),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 1.5,
-                                    vertical: 10.0,
-                                  ),
-                                  child: UserInfo(user: story.user!),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // InkWell(
-                    //   onTap: () => Get.toNamed("/slot-machine"),
-                    //   child: Center(child: SvgPicture.asset("assets/svgs/slot-icon.svg")),
-                    // ),
-                    Positioned(
-                      right: width * 0.02,
-                      child: Container(
-                        height: height * 0.2,
-                        width: width * 0.3,
-                        // color: Colors.red,
-                        child: InkWell(
-                            onTap: () => Get.toNamed("/slot-machine"),
-                            child:
-                                SvgPicture.asset('assets/svgs/slot-icon.svg')),
-                      ),
-                    )
-                  ],
+          //Logic for Fading
+
+          // fabKey.currentState!.open()
+          // fabKey.currentState.open()
+          //     ? Stack(
+          //         fit: StackFit.expand,
+          //         children: [
+          //           Image.asset('assets/images/filter.png', fit: BoxFit.cover),
+          //           ClipRRect(
+          //             // Clip it cleanly.
+          //             child: BackdropFilter(
+          //               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          //               child: Container(),
+          //             ),
+          //           ),
+          //         ],
+          //       )
+          //     :
+          Stack(
+        children: [
+          GestureDetector(
+            onTapDown: (details) => _onTapDown(details, story),
+            child: Stack(
+              children: <Widget>[
+                PageView.builder(
+                  controller: _pageController,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: widget.stories!.length,
+                  itemBuilder: (context, i) {
+                    final Story story = widget.stories![i];
+
+                    return HomeTabView(
+                      backgroundImagePath: story.url!,
+                    );
+                  },
                 ),
+                Positioned(
+                  top: 40.0,
+                  left: 10.0,
+                  right: 10.0,
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: widget.stories!
+                            .asMap()
+                            .map((i, e) {
+                              return MapEntry(
+                                i,
+                                AnimatedBar(
+                                  animController: _animController!,
+                                  position: i,
+                                  currentIndex: _currentIndex,
+                                ),
+                              );
+                            })
+                            .values
+                            .toList(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 1.5,
+                          vertical: 10.0,
+                        ),
+                        child: UserInfo(user: story.user!),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // InkWell(
+          //   onTap: () => Get.toNamed("/slot-machine"),
+          //   child: Center(child: SvgPicture.asset("assets/svgs/slot-icon.svg")),
+          // ),
+          Positioned(
+            right: width * 0.02,
+            child: Container(
+              height: height * 0.2,
+              width: width * 0.3,
+              // color: Colors.red,
+              child: InkWell(
+                  onTap: () => Get.toNamed("/slot-machine"),
+                  child: SvgPicture.asset('assets/svgs/slot-icon.svg')),
+            ),
+          )
+        ],
+      ),
     );
   }
 
