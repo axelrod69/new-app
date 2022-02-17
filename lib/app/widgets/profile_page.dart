@@ -2,6 +2,10 @@ import 'package:boozimba/app/utils/curvedAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import '../modules/membership/views/membership_details_platinum_view.dart';
+import '../modules/membership/views/membership_details_silver_view.dart';
+import '../modules/membership/views/membership_diamond_view.dart';
 import './profilePage_favourite.dart';
 import './profileLastPub.dart';
 import '../utils/myPinkPainter.dart';
@@ -36,30 +40,51 @@ class ProfilePageState extends State<ProfilePage> {
           children: [
             Stack(
               children: [
-                ClipPath(
-                  clipper: CurvedAppBar(),
-                  child: Container(
-                    height: height * 0.25,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                          Color.fromRGBO(254, 215, 94, 1),
-                          Color.fromRGBO(240, 127, 231, 1)
-                        ])),
-                  ),
+                // ClipPath(
+                //   clipper: CurvedAppBar(),
+                //   child: Container(
+                //     height: height * 0.25,
+                //     width: double.infinity,
+                //     decoration: BoxDecoration(
+                //         gradient: LinearGradient(
+                //             begin: Alignment.topLeft,
+                //             end: Alignment.bottomRight,
+                //             colors: [
+                //           Color.fromRGBO(254, 215, 94, 1),
+                //           Color.fromRGBO(240, 127, 231, 1)
+                //         ])),
+                //   ),
+                // ),
+                Container(
+                  height: height * 0.32,
+                  width: double.infinity,
+                  // color: Colors.white,
+                  decoration: BoxDecoration(
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //     color: Colors.black,
+                      //     spreadRadius: 5,
+                      //     blurRadius: 10,
+                      //     offset: Offset(0,)
+                      //   )
+                      // ],
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage('assets/images/shape_01.png'))),
                 ),
                 Positioned(
                     child: Image.asset(
                   'assets/images/logo-with-bg.png',
                 )),
                 Positioned(
-                  top: height * 0.052,
-                  left: width * 0.15,
+                  // top: height * 0.09,
+                  top: height * 0.065,
+                  // left: width * 0.15,
+                  left: width * 0.12,
                   child: Container(
+                    // color: Colors.red,
                     height: height * 0.16,
+                    // width: width * 0.25,
                     width: width * 0.2,
                     // color: Colors.red,
                     // padding: EdgeInsets.only(bottom: height * 0.0),
@@ -68,7 +93,7 @@ class ProfilePageState extends State<ProfilePage> {
                     child: Stack(
                       children: [
                         Container(
-                          width: width * 0.2,
+                          width: width * 0.25,
                           height: height * 0.15,
                           // color: Colors.yellow,
                           // child: CircleAvatar(
@@ -120,8 +145,10 @@ class ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Positioned(
-                    bottom: height * 0.02,
-                    left: width * 0.12,
+                    // bottom: height * 0.02,
+                    bottom: height * 0.07,
+                    // left: width * 0.12,
+                    left: width * 0.08,
                     child: Row(
                       children: [
                         Icon(Icons.upgrade, color: Colors.white),
@@ -139,8 +166,10 @@ class ProfilePageState extends State<ProfilePage> {
                       ],
                     )),
                 Positioned(
-                  top: height * 0.08,
-                  left: width * 0.365,
+                  // top: height * 0.08,
+                  top: height * 0.1,
+                  // left: width * 0.365,
+                  left: width * 0.34,
                   child: Container(
                     width: width * 0.614,
                     height: height * 0.1,
@@ -157,7 +186,7 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 22,
+                                    fontSize: 20,
                                     shadows: [
                                       Shadow(
                                           color: Colors.black,
@@ -165,16 +194,41 @@ class ProfilePageState extends State<ProfilePage> {
                                           offset: Offset(0, 2))
                                     ]),
                               ),
-                              SvgPicture.asset('assets/svgs/silver.svg',
-                                  height: 25,
-                                  width: 25,
-                                  color: Color.fromRGBO(220, 218, 218, 1)),
-                              SvgPicture.asset('assets/svgs/gold.svg',
-                                  height: 25, width: 25, color: Colors.yellow),
-                              SvgPicture.asset('assets/svgs/diamond.svg',
-                                  height: 25, width: 25, color: Colors.blue),
-                              SvgPicture.asset('assets/svgs/platinum.svg',
-                                  height: 25, width: 25, color: Colors.green)
+                              InkWell(
+                                onTap: () =>
+                                    Get.to(() => MembershipDetailsSilverView()),
+                                child: SvgPicture.asset(
+                                    'assets/svgs/silver.svg',
+                                    height: 29,
+                                    width: 29,
+                                    color: Color.fromRGBO(220, 218, 218, 1)),
+                              ),
+                              InkWell(
+                                onTap: () => Get.to(
+                                    () => MembershipDetailsDiamondView()),
+                                child: SvgPicture.asset('assets/svgs/gold.svg',
+                                    height: 29,
+                                    width: 29,
+                                    color: Colors.yellow),
+                              ),
+                              InkWell(
+                                onTap: () =>
+                                    Get.to(() => MembershipDetailsDiamondView),
+                                child: SvgPicture.asset(
+                                    'assets/svgs/diamond.svg',
+                                    height: 29,
+                                    width: 29,
+                                    color: Colors.blue),
+                              ),
+                              InkWell(
+                                onTap: () => Get.to(
+                                    () => MembershipDetailsPlatiunumView),
+                                child: SvgPicture.asset(
+                                    'assets/svgs/platinum.svg',
+                                    height: 29,
+                                    width: 29,
+                                    color: Colors.green),
+                              )
                             ],
                           ),
                         ),
@@ -378,7 +432,7 @@ class ProfilePageState extends State<ProfilePage> {
                     EdgeInsets.only(left: width * 0.035, right: width * 0.035),
                 child: ProfileLastPub()),
             SizedBox(
-              height: height * 0.08,
+              height: height * 0.09,
             ),
             Container(
               alignment: Alignment.center,

@@ -186,7 +186,7 @@ class CustomOverviewState extends State<CustomOverview> {
             ),
           ),
         ),
-        SizedBox(height: h * 0.008),
+        SizedBox(height: h * 0.001),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
@@ -370,7 +370,7 @@ class CustomOverviewState extends State<CustomOverview> {
         ),
         OverViewClan(),
         Container(
-          height: h * 0.20,
+          height: h * 0.21,
           // color: Colors.red,
           padding: EdgeInsets.all(24),
           child: GridView.builder(

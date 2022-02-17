@@ -50,7 +50,9 @@ class LogOutButtonClickState extends State<LogOutButtonClick>
     return GestureDetector(
       onTap: () {
         if (isZoom) {
-          _animationController.forward().then((value) => Get.toNamed('/home'));
+          _animationController
+              .forward()
+              .then((value) => Get.toNamed('/sign-in'));
           // Get.toNamed('/home');
           isZoom = false;
         } else {

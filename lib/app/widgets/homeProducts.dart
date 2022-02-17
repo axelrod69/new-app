@@ -6,8 +6,10 @@ import 'package:boozimba/app/modules/booking/view/booking_view.dart';
 import 'package:boozimba/app/modules/home/views/home_tab_view.dart';
 import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
+import 'package:blur/blur.dart';
 
 class StoryScreen extends StatefulWidget {
   final List<Story>? stories;
@@ -21,6 +23,8 @@ class StoryScreen extends StatefulWidget {
 class _StoryScreenState extends State<StoryScreen>
     with SingleTickerProviderStateMixin {
   final GlobalKey<FabCircularMenuState> fabKey = GlobalKey();
+  final GlobalKey<FabCircularMenuState> fabKeyOne = GlobalKey();
+  // SystemChrome.setEnabledSystemUIOverlays([]);
 
   PageController? _pageController;
   AnimationController? _animController;
@@ -29,10 +33,12 @@ class _StoryScreenState extends State<StoryScreen>
 
   bool _isButtonPreesd = false;
   bool _isOpen = false;
+  double blurValue = 0;
 
   @override
   void initState() {
     super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
     _pageController = PageController();
     _animController = AnimationController(vsync: this);
 
@@ -66,10 +72,6 @@ class _StoryScreenState extends State<StoryScreen>
     super.dispose();
   }
 
-  // Future<void> _onSwipeDown(BuildContext context) async {
-  //   await Get.toNamed('/slot-machine');
-  // }
-
   @override
   Widget build(BuildContext context) {
     final Story story = widget.stories![_currentIndex];
@@ -78,178 +80,60 @@ class _StoryScreenState extends State<StoryScreen>
 
     //Bottom Circular Menu
     return Scaffold(
-      floatingActionButton: FabCircularMenu(
-        key: fabKey,
-        // Cannot be `Alignment.center`
-        alignment: Alignment.bottomRight,
-        // ringColor: Colors.white.withOpacity(0.1),
-        ringColor: Colors.transparent,
-        ringDiameter: 250.0,
-        ringWidth: 60.0,
-        fabSize: MediaQuery.of(context).size.width * 0.12,
-        fabElevation: 8.0,
-        fabIconBorder: CircleBorder(),
-        fabColor: Colors.white,
-        fabOpenIcon: Center(
-          child: SvgPicture.asset(
-            "assets/svgs/filter-icon.svg",
-          ),
-        ),
-        onDisplayChange: (isOpen) {
-          print(isOpen);
-          if (!isOpen) {
-            _isOpen = true;
-          } else {
-            _isOpen = false;
-          }
-        },
-
-        fabCloseIcon: SvgPicture.asset("assets/svgs/sideBar.svg"),
-        fabMargin: const EdgeInsets.all(16.0),
-        animationDuration: const Duration(milliseconds: 1000),
-        animationCurve: Curves.easeInOutBack,
-
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(top: height * 0.04),
-            child: RawMaterialButton(
-              elevation: 5,
-              onPressed: () {
-                // _showSnackBar(context, "You pressed 1");
-              },
-              shape: CircleBorder(),
-              // padding: const EdgeInsets.all(10.0),
-              child:
-                  SvgPicture.asset("assets/svgs/ll.svg", height: 45, width: 45),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: height * 0.02),
-            child: RawMaterialButton(
-              onPressed: () {
-                // _showSnackBar(context, "You pressed 2");
-              },
-              shape: CircleBorder(),
-              // padding: const EdgeInsets.all(10.0),
-              elevation: 5,
-              child: SvgPicture.asset("assets/svgs/filter-01.svg",
-                  height: 50, width: 50),
-            ),
-          ),
-          // padding: EdgeInsets.only(left: width * 0.04, top: height * 0.005),
-          Padding(
-            padding: EdgeInsets.only(left: width * 0.04, top: height * 0.005),
-            child: RawMaterialButton(
-              onPressed: () {
-                // _showSnackBar(context, "You pressed 3");
-              },
-              shape: CircleBorder(),
-              // padding: const EdgeInsets.all(10.0),
-              elevation: 5,
-              child: SvgPicture.asset("assets/svgs/location.svg",
-                  height: 50, width: 50),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: width * 0.08, top: height * 0.015),
-            child: RawMaterialButton(
-              onPressed: () {
-                // _showSnackBar(
-                // context, "You pressed 4. This one closes the menu on tap");
-                // fabKey.currentState!.close();
-                setState(() {
-                  _isButtonPreesd = !_isButtonPreesd;
-                });
-              },
-              shape: CircleBorder(),
-              // padding: const EdgeInsets.all(10.0),
-              elevation: 5,
-              // child: !_isButtonPreesd
-              //     ? SvgPicture.asset("assets/svgs/heart.svg",
-              //         height: 45, width: 45)
-              //     : IconButton(
-              //         onPressed: () => setState(() {
-              //           _isButtonPreesd = !_isButtonPreesd;
-              //         }),
-              //         icon: Icon(Icons.favorite, color: Colors.red),
-              //       ),
-              child: SvgPicture.asset("assets/svgs/heart.svg",
-                  height: 45, width: 45),
-            ),
-          )
-        ],
-      ),
-      //Bottom Circular Ends
-      // backgroundColor: Colors.black,
-      body:
-
-
-          //Logic for Fading
-
-          // fabKey.currentState!.open()
-          // fabKey.currentState.open()
-          //     ? Stack(
-          //         fit: StackFit.expand,
-          //         children: [
-          //           Image.asset('assets/images/filter.png', fit: BoxFit.cover),
-          //           ClipRRect(
-          //             // Clip it cleanly.
-          //             child: BackdropFilter(
-          //               filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          //               child: Container(),
-          //             ),
-          //           ),
-          //         ],
-          //       )
-          //     :
-          Stack(
+      body: Stack(
         children: [
           GestureDetector(
             onTapDown: (details) => _onTapDown(details, story),
             child: Stack(
               children: <Widget>[
-                PageView.builder(
-                  controller: _pageController,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: widget.stories!.length,
-                  itemBuilder: (context, i) {
-                    final Story story = widget.stories![i];
+                Blur(
+                  blur: blurValue,
+                  colorOpacity: 0.01,
+                  child: PageView.builder(
+                    controller: _pageController,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: widget.stories!.length,
+                    itemBuilder: (context, i) {
+                      final Story story = widget.stories![i];
 
-                    return HomeTabView(
-                      backgroundImagePath: story.url!,
-                    );
-                  },
+                      return HomeTabView(
+                        backgroundImagePath: story.url!,
+                      );
+                    },
+                  ),
                 ),
-                Positioned(
-                  top: 40.0,
-                  left: 10.0,
-                  right: 10.0,
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        children: widget.stories!
-                            .asMap()
-                            .map((i, e) {
-                              return MapEntry(
-                                i,
-                                AnimatedBar(
-                                  animController: _animController!,
-                                  position: i,
-                                  currentIndex: _currentIndex,
-                                ),
-                              );
-                            })
-                            .values
-                            .toList(),
+                Blur(
+                  blur: blurValue,
+                  colorOpacity: 0.01,
+                  child: Positioned(
+                    top: 20.0,
+                    left: 10.0,
+                    right: 10.0,
+                    child: Container(
+                      height: height * 0.3,
+                      width: double.infinity,
+                      // color: Colors.red,
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: widget.stories!
+                                .asMap()
+                                .map((i, e) {
+                                  return MapEntry(
+                                    i,
+                                    AnimatedBar(
+                                      animController: _animController!,
+                                      position: i,
+                                      currentIndex: _currentIndex,
+                                    ),
+                                  );
+                                })
+                                .values
+                                .toList(),
+                          ),
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 1.5,
-                          vertical: 10.0,
-                        ),
-                        child: UserInfo(user: story.user!),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],
@@ -259,17 +143,195 @@ class _StoryScreenState extends State<StoryScreen>
           //   onTap: () => Get.toNamed("/slot-machine"),
           //   child: Center(child: SvgPicture.asset("assets/svgs/slot-icon.svg")),
           // ),
-          Positioned(
-            right: width * 0.02,
-            child: Container(
-              height: height * 0.2,
-              width: width * 0.3,
-              // color: Colors.red,
-              child: InkWell(
-                  onTap: () => Get.toNamed("/slot-machine"),
-                  child: SvgPicture.asset('assets/svgs/slot-icon.svg')),
+          Blur(
+            colorOpacity: 0.01,
+            blur: blurValue,
+            child: Positioned(
+              right: width * 0.02,
+              child: Container(
+                height: height * 0.2,
+                width: width * 0.3,
+                // color: Colors.red,
+                child: InkWell(
+                    onTap: () => Get.toNamed("/slot-machine"),
+                    child: SvgPicture.asset('assets/svgs/slot-icon.svg')),
+              ),
             ),
-          )
+          ),
+          Padding(
+            padding:
+                EdgeInsets.only(bottom: height * 0.05, right: width * 0.05),
+            child: FabCircularMenu(
+              key: fabKey,
+              // Cannot be `Alignment.center`
+              alignment: Alignment.bottomRight,
+              // ringColor: Colors.white.withOpacity(0.1),
+              ringColor: Colors.transparent,
+              ringDiameter: 250.0,
+              ringWidth: 60.0,
+              fabSize: MediaQuery.of(context).size.width * 0.12,
+              fabElevation: 8.0,
+              fabIconBorder: CircleBorder(),
+              fabColor: Colors.white,
+              fabOpenIcon: Center(
+                child: SvgPicture.asset(
+                  "assets/svgs/filter-icon.svg",
+                ),
+              ),
+              onDisplayChange: (isOpen) {
+                isOpen
+                    ? setState(() {
+                        blurValue = 8;
+                      })
+                    : setState(() {
+                        blurValue = 0;
+                      });
+              },
+
+              fabCloseIcon: SvgPicture.asset("assets/svgs/sideBar.svg"),
+              fabMargin: const EdgeInsets.all(16.0),
+              animationDuration: const Duration(milliseconds: 1000),
+              animationCurve: Curves.easeInOutBack,
+
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(top: height * 0.04),
+                  child: RawMaterialButton(
+                    elevation: 5,
+                    onPressed: () {
+                      // _showSnackBar(context, "You pressed 1");
+                      // Get.toNamed('/profile-page');
+                    },
+                    shape: CircleBorder(),
+                    // padding: const EdgeInsets.all(10.0),
+                    child: SvgPicture.asset("assets/svgs/ll.svg",
+                        height: 45, width: 45),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: height * 0.02),
+                  child: RawMaterialButton(
+                    onPressed: () {
+                      // _showSnackBar(context, "You pressed 2");
+                    },
+                    shape: CircleBorder(),
+                    // padding: const EdgeInsets.all(10.0),
+                    elevation: 5,
+                    child: SvgPicture.asset("assets/svgs/filter-01.svg",
+                        height: 50, width: 50),
+                  ),
+                ),
+                // padding: EdgeInsets.only(left: width * 0.04, top: height * 0.005),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: width * 0.04, top: height * 0.005),
+                  child: RawMaterialButton(
+                    onPressed: () {
+                      // _showSnackBar(context, "You pressed 3");
+                    },
+                    shape: CircleBorder(),
+                    // padding: const EdgeInsets.all(10.0),
+                    elevation: 5,
+                    child: SvgPicture.asset("assets/svgs/location.svg",
+                        height: 50, width: 50),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: width * 0.08, top: height * 0.015),
+                  child: RawMaterialButton(
+                    onPressed: () {
+                      // _showSnackBar(
+                      // context, "You pressed 4. This one closes the menu on tap");
+                      // fabKey.currentState!.close();
+                      setState(() {
+                        _isButtonPreesd = !_isButtonPreesd;
+                      });
+                    },
+                    shape: CircleBorder(),
+                    // padding: const EdgeInsets.all(10.0),
+                    elevation: 5,
+                    // child: !_isButtonPreesd
+                    //     ? SvgPicture.asset("assets/svgs/heart.svg",
+                    //         height: 45, width: 45)
+                    //     : IconButton(
+                    //         onPressed: () => setState(() {
+                    //           _isButtonPreesd = !_isButtonPreesd;
+                    //         }),
+                    //         icon: Icon(Icons.favorite, color: Colors.red),
+                    //       ),
+                    child: SvgPicture.asset("assets/svgs/heart.svg",
+                        height: 45, width: 45),
+                  ),
+                )
+              ],
+            ),
+          ),
+          FabCircularMenu(
+            key: fabKeyOne,
+            onDisplayChange: (isOpen) {
+              // isPressed ? _pressed = true : _pressed = false;
+              isOpen
+                  ? setState(() {
+                      blurValue = 8;
+                    })
+                  : setState(() {
+                      blurValue = 0;
+                    });
+              print('Post Click ${blurValue}');
+            },
+            alignment: Alignment.topLeft,
+            ringColor: Colors.transparent,
+            ringDiameter: 300.0,
+            ringWidth: 100.0,
+            fabSize: 50.0,
+            fabElevation: 8.0,
+            fabColor: Colors.transparent,
+            fabOpenIcon: Image.asset('assets/images/logo.png'),
+            fabCloseIcon: Image.asset('assets/images/logo.png'),
+            fabMargin: const EdgeInsets.all(25.0),
+            animationDuration: const Duration(milliseconds: 200),
+            animationCurve: Curves.bounceIn,
+            children: <Widget>[
+              Padding(
+                padding:
+                    EdgeInsets.only(right: width * 0.03, bottom: height * 0.08),
+                child: RawMaterialButton(
+                  onPressed: () {},
+                  shape: CircleBorder(),
+                  child: SvgPicture.asset('assets/svgs/user.svg'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    right: width * 0.07, bottom: height * 0.065),
+                child: RawMaterialButton(
+                  onPressed: () {},
+                  shape: CircleBorder(),
+                  child: SvgPicture.asset('assets/svgs/notification.svg'),
+                ),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(right: width * 0.1, bottom: height * 0.03),
+                child: RawMaterialButton(
+                  onPressed: () {},
+                  shape: CircleBorder(),
+                  child: SvgPicture.asset('assets/svgs/search.svg'),
+                ),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(right: width * 0.1, bottom: height * 0.001),
+                child: RawMaterialButton(
+                  onPressed: () {},
+                  shape: CircleBorder(),
+                  child: SvgPicture.asset('assets/svgs/home.svg',
+                      color: Colors.blue),
+                ),
+              )
+            ],
+          ),
         ],
       ),
     );
@@ -414,11 +476,14 @@ class UserInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        CircleAvatar(
-          radius: 20.0,
-          backgroundColor: Colors.grey[300],
-          backgroundImage: NetworkImage(
-            user!.profileImageUrl!,
+        InkWell(
+          onTap: () => Get.toNamed('/profile-page'),
+          child: CircleAvatar(
+            radius: 20.0,
+            backgroundColor: Colors.grey[300],
+            backgroundImage: NetworkImage(
+              user!.profileImageUrl!,
+            ),
           ),
         ),
         const SizedBox(width: 10.0),
@@ -432,14 +497,14 @@ class UserInfo extends StatelessWidget {
             ),
           ),
         ),
-        // IconButton(
-        //   icon: const Icon(
-        //     Icons.close,
-        //     size: 30.0,
-        //     color: Colors.white,
-        //   ),
-        //   onPressed: () => Navigator.of(context).pop(),
-        // ),
+        IconButton(
+          icon: const Icon(
+            Icons.close,
+            size: 30.0,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ],
     );
   }

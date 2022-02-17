@@ -157,20 +157,22 @@ class _BookingViewState extends State<BookingView> {
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
+    var textScale = MediaQuery.of(context).textScaleFactor * 1.5;
+
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => Get.to(() => BookingDetailsView()),
-        // icon: Icon(
-        //   Icons.add,
-        // ),
-        // isExtended: true,
-        label: Text("  Book Now  "),
-        backgroundColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            side: BorderSide(color: Colors.white, width: 3.0)),
-      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: () => Get.to(() => BookingDetailsView()),
+      //   // icon: Icon(
+      //   //   Icons.add,
+      //   // ),
+      //   // isExtended: true,
+      //   label: Text("  Book Now  "),
+      //   backgroundColor: Colors.transparent,
+      //   shape: RoundedRectangleBorder(
+      //       borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      //       side: BorderSide(color: Colors.white, width: 3.0)),
+      // ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -302,6 +304,22 @@ class _BookingViewState extends State<BookingView> {
                     //       child: SvgPicture.asset("assets/svgs/slot-icon.svg")),
                     // ),
 
+                    Container(
+                      width: double.infinity,
+                      height: h * 0.32,
+                      decoration: BoxDecoration(
+                          // boxShadow: [
+                          //   BoxShadow(
+                          //     color: Colors.black,
+                          //     spreadRadius: 5,
+                          //     blurRadius: 10,
+                          //     offset: Offset(0,)
+                          //   )
+                          // ],
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('assets/images/shape_01.png'))),
+                    ),
                     Positioned(
                       top: h * 0.02,
                       left: w * 0.01,
@@ -326,9 +344,11 @@ class _BookingViewState extends State<BookingView> {
                       ),
                     ),
                     Positioned(
-                      top: h * 0.12,
-                      left: w * 0,
-                      right: w * 0,
+                      // top: h * 0.12,
+                      top: h * 0.018,
+                      left: w * 0.08,
+                      // left: w * 0,
+                      // right: w * 0,
                       child: Container(
                         // padding: EdgeInsets.only(top: h * 0.2),
                         child: Column(
@@ -347,7 +367,7 @@ class _BookingViewState extends State<BookingView> {
                                   ]),
                                   child: Icon(
                                     Icons.local_bar,
-                                    size: w * 0.1,
+                                    size: w * 0.06,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -366,7 +386,8 @@ class _BookingViewState extends State<BookingView> {
                                         fontFamily: "Segoe",
                                         // fontStyle: FontStyle.italic,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 32,
+                                        // fontSize: 32,
+                                        fontSize: 25,
                                         shadows: [
                                           Shadow(
                                               color: Colors.purple,
@@ -384,14 +405,16 @@ class _BookingViewState extends State<BookingView> {
                               ],
                             ),
                             SizedBox(
-                              height: h * 0.01,
+                              // height: h * 0.01,
+                              height: h * 0.001,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 CustomRatingBar(4.5),
                                 SizedBox(
-                                  width: w * 0.045,
+                                  // width: w * 0.045,
+                                  width: w * 0.03,
                                 ),
                                 // IconButton(
                                 //   onPressed: () {},
@@ -415,8 +438,8 @@ class _BookingViewState extends State<BookingView> {
                               ],
                             ),
                             SizedBox(
-                              height: h * 0.01,
-                            ),
+                                // height: h * 0.01,
+                                height: h * 0.005),
                             Center(
                               child: Container(
                                 height: h * 0.0001,
@@ -431,22 +454,29 @@ class _BookingViewState extends State<BookingView> {
                         ),
                       ),
                     ),
+                    Padding(
+                      // padding: const EdgeInsets.only(top: 100.0),
+                      padding: EdgeInsets.only(top: h * 0.11),
+                      child: getDescription(
+                        "Debo hacer para que yo construir tres hora todos los. Ambos van a una escuela.entonces necesitan gente  que yo construir tres hora todos los. Ambos van a una escuela.entonces necesitan",
+                      ),
+                    ),
                     Container(
                       alignment: Alignment.center,
                       padding: EdgeInsets.only(
-                        top: h * 0.2,
+                        top: h * 0.35,
                       ),
 
                       //width: double.infinity,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8.0),
-                            child: getDescription(
-                              "Debo hacer para que yo construir tres hora todos los. Ambos van a una escuela.entonces necesitan gente  que yo construir tres hora todos los. Ambos van a una escuela.entonces necesitan",
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(top: 8.0),
+                          //   child: getDescription(
+                          //     "Debo hacer para que yo construir tres hora todos los. Ambos van a una escuela.entonces necesitan gente  que yo construir tres hora todos los. Ambos van a una escuela.entonces necesitan",
+                          //   ),
+                          // ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16),
@@ -1005,7 +1035,7 @@ class _BookingViewState extends State<BookingView> {
                                   ))
                             ],
                           ),
-                          SizedBox(height: h * 0.1)
+                          // SizedBox(height: h * 0.1)
                         ],
                       ),
                     ),
@@ -1021,6 +1051,29 @@ class _BookingViewState extends State<BookingView> {
                 //   4.5,
                 //   250,
                 // ),
+                Container(
+                  width: w * 0.5,
+                  height: h * 0.05,
+                  // color: Colors.red,
+                  margin: EdgeInsets.only(bottom: h * 0.05),
+                  decoration: BoxDecoration(
+                      // color: Colors.white,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                      border: Border.all(color: Colors.white, width: 2)),
+                  child: Center(
+                    child: TextButton(
+                      onPressed: () => Get.to(() => BookingDetailsView()),
+                      child: Text('Book Now',
+                          textScaleFactor: textScale,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10)),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -1032,15 +1085,18 @@ class _BookingViewState extends State<BookingView> {
 
 Container getDescription(desc) {
   return Container(
-    margin: EdgeInsets.all(16),
+    // margin: EdgeInsets.all(16),
+    margin: EdgeInsets.only(left: 50, top: 16, right: 80, bottom: 16),
     child: Text(
       "Debo hacer para que yo construir tres hora todos los. Ambos van a una escuela.entonces necesitan gente  que yo construir tres hora todos los."
       " Ambos van a una escuela.entonces necesitan",
       style: TextStyle(
           fontFamily: "Segoe",
-          fontSize: 16,
+          // fontSize: 16,
+          fontSize: 12,
           fontWeight: FontWeight.bold,
-          color: PrimaryAccentColor,
+          // color: PrimaryAccentColor,
+          color: Colors.white,
           letterSpacing: 0.5),
     ),
   );

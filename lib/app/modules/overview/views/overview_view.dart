@@ -58,7 +58,7 @@ class OverViewView extends GetView<OverViewController> {
                     child: Container(
                       // alignment: Alignment.center,
                       margin: EdgeInsets.only(
-                        top: 70,
+                        top: h * 0.07,
                       ),
                       //width: double.infinity,
                       child: CustomPaint(
@@ -78,7 +78,7 @@ class OverViewView extends GetView<OverViewController> {
                 ],
               ),
               SizedBox(
-                height: 20,
+                height: h * 0.01,
               ),
               CustomOverview(
                 "https://www.ahstatic.com/photos/7962_rsr001_00_p_1024x768.jpg",

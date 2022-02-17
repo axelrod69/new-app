@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomButtonTryNow extends StatefulWidget {
   CustomButtonTryNowState createState() => CustomButtonTryNowState();
   final Widget widgetChild;
+  // final String route;
   double width;
   double height;
+
   CustomButtonTryNow(this.widgetChild, {this.width = 0.25, this.height = 0.05});
 }
 
@@ -57,7 +60,7 @@ class CustomButtonTryNowState extends State<CustomButtonTryNow>
       onTap: () {
         if (isZoom) {
           _animationController.forward();
-          // Get.toNamed('/home');
+          Get.toNamed("/overview");
           isZoom = false;
         } else {
           _animationController.reverse();

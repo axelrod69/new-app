@@ -54,13 +54,14 @@ class GoogleMapScreenState extends State<GoogleMapScreen> {
             height: 30,
             width: 35,
             padding: EdgeInsets.only(left: 5),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.red, width: 5),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(6),
-                    topRight: Radius.circular(6),
-                    bottomLeft: Radius.circular(6),
-                    bottomRight: Radius.circular(6))),
+            // decoration: BoxDecoration(
+            //     border: Border.all(color: Colors.red, width: 5),
+            //     borderRadius: BorderRadius.only(
+            //         topLeft: Radius.circular(6),
+            //         topRight: Radius.circular(6),
+            //         bottomLeft: Radius.circular(6),
+            //         bottomRight: Radius.circular(6))
+            //         ),
             child: CustomPaint(
               painter: SignBoxPainter(),
               child: Icon(Icons.arrow_back_ios, //This here is the icon

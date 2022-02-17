@@ -152,6 +152,7 @@ class CustomCalenderState extends State<CustomCalender> {
     // TODO: implement build
     return Scaffold(
       body: Container(
+        width: double.infinity,
         decoration: BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
@@ -160,14 +161,14 @@ class CustomCalenderState extends State<CustomCalender> {
           children: [
             Container(
               height: height * 0.8,
-              width: width * 1,
+              width: width * 0.9,
               // padding: EdgeInsets.all(100),
               // padding: EdgeInsets.fromLTRB(30, 120, 30, 150),
               padding: EdgeInsets.only(
                   left: width * 0.08,
                   top: height * 0.15,
                   right: width * 0.08,
-                  bottom: height * 0.15),
+                  bottom: height * 0.2),
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/calender_outline.png"),
@@ -175,6 +176,21 @@ class CustomCalenderState extends State<CustomCalender> {
               child: Stack(children: [
                 SfDateRangePicker(
                     yearCellStyle: DateRangePickerYearCellStyle(
+                      disabledDatesTextStyle: TextStyle(color: Colors.red),
+                      leadingDatesTextStyle: TextStyle(
+                          foreground: Paint()
+                            ..color = Colors.white
+                            ..style = PaintingStyle.fill
+                            ..strokeWidth = 5
+                            ..maskFilter = MaskFilter.blur(BlurStyle.inner, 5),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: PrimaryBlue,
+                                blurRadius: 6,
+                                offset: Offset(0, 1))
+                          ]),
                       todayTextStyle: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
@@ -294,7 +310,7 @@ class CustomCalenderState extends State<CustomCalender> {
                   ),
                 )
               ]),
-            )
+            ),
           ],
         ),
       ),

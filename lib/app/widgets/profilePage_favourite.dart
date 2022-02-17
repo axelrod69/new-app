@@ -124,13 +124,16 @@ class ProfilePageFavouriteState extends State<ProfilePageFavourite> {
             left: width * 0.58,
             top: height * 0.01,
             child: Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                  color: Colors.pink,
-                  blurRadius: 80,
-                  spreadRadius: 6,
-                )
-              ]),
+              decoration: BoxDecoration(
+                  // color: Colors.yellow,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.pink,
+                      blurRadius: 80,
+                      // blurRadius: 5,
+                      // spreadRadius: 6,
+                    )
+                  ]),
               child: !favourite
                   ? IconButton(
                       onPressed: _onPressed,
