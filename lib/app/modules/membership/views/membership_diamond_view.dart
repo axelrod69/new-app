@@ -8,18 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class MembershipDetailsDiamondView extends GetView<MembershipDetailsDiamondController>{
-
+class MembershipDetailsDiamondView
+    extends GetView<MembershipDetailsDiamondController> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
     return Scaffold(
-
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
+            height: h * 1,
             decoration: BoxDecoration(
               //color: Colors.black,
               image: DecorationImage(
@@ -32,31 +32,44 @@ class MembershipDetailsDiamondView extends GetView<MembershipDetailsDiamondContr
               children: [
                 Stack(
                   children: [
+                    // Container(
+                    //     width: w * 0.28,
+                    //     height: h * 0.15,
+                    //     child: Center(child: Image.asset("assets/images/logo-with-bg.png")),
+                    //     decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.only(
+                    //         bottomRight: Radius.circular(w * 0.25),
+                    //       ),
+                    //     )
+                    // ),
                     Container(
-                        width: w * 0.28,
-                        height: h * 0.15,
-                        child: Center(child: Image.asset("assets/images/logo-with-bg.png")),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(w * 0.25),
-                          ),
-                        )
+                      width: w * 0.28,
+                      height: h * 0.15,
+                      // color: Colors.red,
+                      // padding: EdgeInsets.only(left: w * 0.01),
+                      // margin: EdgeInsets.only(left: w * 0.1),
+                    ),
+                    Positioned(
+                      child: Container(
+                          // margin: EdgeInsets.only(left: w * 0.03),
+                          child: Image.asset("assets/images/logo-with-bg.png")),
                     ),
                     Center(
                       child: Container(
                         // alignment: Alignment.center,
-                        margin: EdgeInsets.only(top: 70,),
+                        margin: EdgeInsets.only(
+                          top: 70,
+                        ),
                         //width: double.infinity,
                         child: CustomPaint(
                           painter: MyPinkPainter(),
                           child: CustomButtonTryNow(
                             TextButton(
-                                onPressed: (){},
+                                onPressed: () {},
                                 child: CustomTextNoProperty(
                                   "Boozimba Membership",
                                   fontSize: 16,
-                                )
-                            ),
+                                )),
                             width: 0.60,
                             height: 0.07,
                           ),
@@ -65,7 +78,6 @@ class MembershipDetailsDiamondView extends GetView<MembershipDetailsDiamondContr
                     ),
                   ],
                 ),
-
                 MembershipDetails("Diamond \nMembership", PrimaryColor, 60),
                 Center(
                   child: Container(
@@ -76,12 +88,11 @@ class MembershipDetailsDiamondView extends GetView<MembershipDetailsDiamondContr
                       painter: MyPinkPainter(),
                       child: CustomButtonTryNow(
                         TextButton(
-                            onPressed: (){},
+                            onPressed: () {},
                             child: CustomTextNoProperty(
                               "Subscribe Now",
                               fontSize: 16,
-                            )
-                        ),
+                            )),
                         width: 0.60,
                         height: 0.07,
                       ),
@@ -93,8 +104,6 @@ class MembershipDetailsDiamondView extends GetView<MembershipDetailsDiamondContr
           ),
         ),
       ),
-
     );
-
   }
 }

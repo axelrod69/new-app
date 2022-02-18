@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-
 class NotifyView extends GetView<NotifyController> {
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,8 @@ class NotifyView extends GetView<NotifyController> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: double.infinity,
+            // height: double.infinity,
+            height: h * 1,
             width: double.infinity,
             decoration: BoxDecoration(
               //color: Colors.black,
@@ -38,21 +38,32 @@ class NotifyView extends GetView<NotifyController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               //marginAll(20),
               children: [
-                Row(
+                Stack(
                   children: [
+                    // Container(
+                    //     width: w * 0.28,
+                    //     height: h * 0.15,
+                    //     child: Center(
+                    //         child:
+                    //             Image.asset("assets/images/logo-with-bg.png")),
+                    //     decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.only(
+                    //         bottomRight: Radius.circular(w * 0.25),
+                    //       ),
+                    //     )),
                     Container(
-                        width: w * 0.28,
-                        height: h * 0.15,
-                        child: Center(child: Image.asset("assets/images/logo-with-bg.png")),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(w * 0.25),
-                          ),
-                        )
+                      width: w * 0.28,
+                      height: h * 0.15,
+                      // color: Colors.red,
+                      // padding: EdgeInsets.only(left: w * 0.01),
+                      // margin: EdgeInsets.only(left: w * 0.1),
+                    ),
+                    Positioned(
+                      child: Container(
+                          // margin: EdgeInsets.only(left: w * 0.03),
+                          child: Image.asset("assets/images/logo-with-bg.png")),
                     ),
                     SizedBox(),
-
-
 
                     /* Container(
                       width: 10,
@@ -76,48 +87,47 @@ class NotifyView extends GetView<NotifyController> {
                   ),
                 ),*/
 
-          Stack(
-            alignment: Alignment.topCenter,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: circleRadius / 2.0),
-                child: Container(
-                  margin: EdgeInsets.all(20),
-                  child: CustomPaint(
-                      painter: MyCustomPainter(
-                          PrimarySilver
+                Stack(
+                  alignment: Alignment.topCenter,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(top: circleRadius / 2.0),
+                      child: Container(
+                        margin: EdgeInsets.all(20),
+                        child: CustomPaint(
+                            painter: MyCustomPainter(PrimarySilver),
+                            child: CustomNotifyWidget()),
                       ),
-                      child: CustomNotifyWidget(
-                      )
-                  ),
-                ),
-              ),
-              Container(
-                width: circleRadius,
-                height: circleRadius,
-                margin: EdgeInsets.only(top: 12),
-                decoration:
-                ShapeDecoration(shape: CircleBorder(
-                ), ),
-                child: Padding(
-                  padding: EdgeInsets.all(circleBorderWidth),
-                  child: DecoratedBox(
-                    decoration: ShapeDecoration(
-                        shape: CircleBorder(),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/icons/twitter.png",
-                              //fit: BoxFit.cover,
-                            ),
-                        )
                     ),
-                  ),
+                    Container(
+                      width: circleRadius,
+                      height: circleRadius,
+                      margin: EdgeInsets.only(top: 12),
+                      decoration: ShapeDecoration(
+                        shape: CircleBorder(),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(circleBorderWidth),
+                        child: DecoratedBox(
+                          decoration: ShapeDecoration(
+                              shape: CircleBorder(),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                  "assets/icons/twitter.png",
+                                  //fit: BoxFit.cover,
+                                ),
+                              )),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
                 CustomPaint(
-                  size: Size(w,(w*0.625).toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
+                  size: Size(
+                      w,
+                      (w * 0.625)
+                          .toDouble()), //You can Replace [WIDTH] with your desired width for Custom Paint and height will be calculated automatically
                   painter: RPSCustomPainter(),
                 ),
                 /*Stack(
@@ -136,7 +146,6 @@ class NotifyView extends GetView<NotifyController> {
       //),
     );
   }
-
 
   Container _getDataConatiner() {
     return Container(
@@ -177,30 +186,28 @@ class NotifyView extends GetView<NotifyController> {
   }
 
   Container _getImage() {
-
     return Container(
       width: 100,
       height: 100,
       alignment: Alignment.topCenter,
       decoration: BoxDecoration(
         //color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(50.0),
+        borderRadius: BorderRadius.all(
+          Radius.circular(50.0),
         ),
-       // border: Border.all(color: Colors.cyanAccent, width: 8),
-       /* image: DecorationImage(image: AssetImage("assets/icons/twitter.png"),
+        // border: Border.all(color: Colors.cyanAccent, width: 8),
+        /* image: DecorationImage(image: AssetImage("assets/icons/twitter.png"),
             fit: BoxFit.cover,
         ),*/
       ),
-
       child: Stack(
         children: [
-          Container(
-            alignment: Alignment.topCenter,
-              child: MyArc()),
+          Container(alignment: Alignment.topCenter, child: MyArc()),
           Center(
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
-              child: Image.asset("assets/icons/twitter.png",
+              child: Image.asset(
+                "assets/icons/twitter.png",
                 fit: BoxFit.cover,
               ),
             ),

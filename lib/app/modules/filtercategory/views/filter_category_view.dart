@@ -37,19 +37,32 @@ class _FilterCategoryViewState extends State<FilterCategoryView> {
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(children: [
+              Container(
+                width: w * 0.28,
+                height: h * 0.15,
+                // color: Colors.red,
+                // padding: EdgeInsets.only(left: w * 0.01),
+                // margin: EdgeInsets.only(left: w * 0.1),
+              ),
+              Positioned(
+                child: Container(
+                    // margin: EdgeInsets.only(left: w * 0.03),
+                    child: Image.asset("assets/images/logo-with-bg.png")),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                      width: w * 0.28,
-                      height: h * 0.15,
-                      child: Center(
-                          child: Image.asset("assets/images/logo-with-bg.png")),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(w * 0.25),
-                        ),
-                      )),
+                  // Container(
+                  //     width: w * 0.28,
+                  //     height: h * 0.15,
+                  //     child: Center(
+                  //         child: Image.asset("assets/images/logo-with-bg.png")),
+                  //     decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.only(
+                  //         bottomRight: Radius.circular(w * 0.25),
+                  //       ),
+                  //     )),
+
                   SizedBox(),
                 ],
               ),
@@ -176,13 +189,19 @@ class _FilterCategoryViewState extends State<FilterCategoryView> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  CustomGridItem(
-                    svgPath: "assets/svgs/food.svg",
-                    name: "Food",
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: CustomGridItem(
+                      svgPath: "assets/svgs/food.svg",
+                      name: "Food",
+                    ),
                   ),
-                  CustomGridItem(
-                    svgPath: "assets/svgs/mic.svg",
-                    name: "Live Music",
+                  Padding(
+                    padding: EdgeInsets.only(top: 5.0),
+                    child: CustomGridItem(
+                      svgPath: "assets/svgs/mic.svg",
+                      name: "Live Music",
+                    ),
                   ),
                   CustomGridItem(
                     svgPath: "assets/svgs/dance-floor.svg",

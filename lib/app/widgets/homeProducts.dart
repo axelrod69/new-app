@@ -80,6 +80,76 @@ class _StoryScreenState extends State<StoryScreen>
 
     //Bottom Circular Menu
     return Scaffold(
+      // floatingActionButton: Padding(
+      //   padding: EdgeInsets.only(top: height * 0.01),
+      //   child: FabCircularMenu(
+      //     // key: fabKeyOne,
+      //     onDisplayChange: (isOpen) {
+      //       // isPressed ? _pressed = true : _pressed = false;
+      //       isOpen
+      //           ? setState(() {
+      //               blurValue = 8;
+      //             })
+      //           : setState(() {
+      //               blurValue = 0;
+      //             });
+      //       print('Post Click ${blurValue}');
+      //     },
+      //     alignment: Alignment.topLeft,
+      //     ringColor: Colors.transparent,
+      //     ringDiameter: 300.0,
+      //     ringWidth: 100.0,
+      //     fabSize: 50.0,
+      //     fabElevation: 8.0,
+      //     fabColor: Colors.transparent,
+      //     fabOpenIcon: Image.asset('assets/images/logo.png'),
+      //     fabCloseIcon: Image.asset('assets/images/logo.png'),
+      //     fabMargin: const EdgeInsets.all(25.0),
+      //     animationDuration: const Duration(milliseconds: 200),
+      //     animationCurve: Curves.bounceIn,
+      //     children: <Widget>[
+      //       Padding(
+      //         padding:
+      //             EdgeInsets.only(right: width * 0.03, bottom: height * 0.08),
+      //         // padding:
+      //         //     EdgeInsets.only(right: width * 0.04, bottom: height * 0.08),
+      //         child: RawMaterialButton(
+      //           onPressed: () {},
+      //           shape: CircleBorder(),
+      //           child: SvgPicture.asset('assets/svgs/user.svg'),
+      //         ),
+      //       ),
+      //       Padding(
+      //         padding:
+      //             EdgeInsets.only(right: width * 0.07, bottom: height * 0.065),
+      //         child: RawMaterialButton(
+      //           onPressed: () {},
+      //           shape: CircleBorder(),
+      //           child: SvgPicture.asset('assets/svgs/notification.svg'),
+      //         ),
+      //       ),
+      //       Padding(
+      //         padding:
+      //             EdgeInsets.only(right: width * 0.1, bottom: height * 0.03),
+      //         child: RawMaterialButton(
+      //           onPressed: () {},
+      //           shape: CircleBorder(),
+      //           child: SvgPicture.asset('assets/svgs/search.svg'),
+      //         ),
+      //       ),
+      //       Padding(
+      //         padding:
+      //             EdgeInsets.only(right: width * 0.1, bottom: height * 0.001),
+      //         child: RawMaterialButton(
+      //           onPressed: () {},
+      //           shape: CircleBorder(),
+      //           child: SvgPicture.asset('assets/svgs/home.svg',
+      //               color: Colors.blue),
+      //         ),
+      //       )
+      //     ],
+      //   ),
+      // ),
       body: Stack(
         children: [
           GestureDetector(
@@ -226,9 +296,7 @@ class _StoryScreenState extends State<StoryScreen>
                   padding:
                       EdgeInsets.only(left: width * 0.04, top: height * 0.005),
                   child: RawMaterialButton(
-                    onPressed: () {
-                      // _showSnackBar(context, "You pressed 3");
-                    },
+                    onPressed: () => Get.toNamed("/filter"),
                     shape: CircleBorder(),
                     // padding: const EdgeInsets.all(10.0),
                     elevation: 5,
@@ -267,6 +335,7 @@ class _StoryScreenState extends State<StoryScreen>
               ],
             ),
           ),
+
           FabCircularMenu(
             key: fabKeyOne,
             onDisplayChange: (isOpen) {
@@ -297,7 +366,7 @@ class _StoryScreenState extends State<StoryScreen>
                 padding:
                     EdgeInsets.only(right: width * 0.03, bottom: height * 0.08),
                 child: RawMaterialButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed('/profile-page'),
                   shape: CircleBorder(),
                   child: SvgPicture.asset('assets/svgs/user.svg'),
                 ),
@@ -306,7 +375,7 @@ class _StoryScreenState extends State<StoryScreen>
                 padding: EdgeInsets.only(
                     right: width * 0.07, bottom: height * 0.065),
                 child: RawMaterialButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed("/notify"),
                   shape: CircleBorder(),
                   child: SvgPicture.asset('assets/svgs/notification.svg'),
                 ),
@@ -324,7 +393,7 @@ class _StoryScreenState extends State<StoryScreen>
                 padding:
                     EdgeInsets.only(right: width * 0.1, bottom: height * 0.001),
                 child: RawMaterialButton(
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed('/home'),
                   shape: CircleBorder(),
                   child: SvgPicture.asset('assets/svgs/home.svg',
                       color: Colors.blue),

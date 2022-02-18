@@ -34,17 +34,27 @@ class MembershipDetailsView extends GetView<MembershipDetailsController> {
               children: [
                 Stack(
                   children: [
+                    // Container(
+                    //     width: w * 0.28,
+                    //     height: h * 0.15,
+                    //     child: Center(
+                    //         child:
+                    //             Image.asset("assets/images/logo-with-bg.png")),
+                    //     decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.only(
+                    //         bottomRight: Radius.circular(w * 0.25),
+                    //       ),
+                    //     )),
                     Container(
-                        width: w * 0.28,
-                        height: h * 0.15,
-                        child: Center(
-                            child:
-                                Image.asset("assets/images/logo-with-bg.png")),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(w * 0.25),
-                          ),
-                        )),
+                      width: w * 0.28,
+                      height: h * 0.15,
+                      // color: Colors.red,
+                      // padding: EdgeInsets.only(left: w * 0.01),
+                      // margin: EdgeInsets.only(left: w * 0.1),
+                    ),
+                    Positioned(
+                      child: Image.asset("assets/images/logo-with-bg.png"),
+                    ),
                     Center(
                       child: Container(
                         // alignment: Alignment.center,

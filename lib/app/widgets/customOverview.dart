@@ -3,6 +3,7 @@ import 'package:boozimba/app/utils/myCirclePainter.dart';
 import 'package:boozimba/app/utils/participantPainter.dart';
 import 'package:boozimba/app/widgets/customBtnTryNow.dart';
 import 'package:boozimba/app/widgets/participantsList.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:bordered_text/bordered_text.dart';
@@ -40,25 +41,34 @@ class CustomOverviewState extends State<CustomOverview> {
     "Rahul Saha"
   ];
 
+  DateTime dateTimes = DateTime.now();
+
   final TextEditingController _controller = new TextEditingController();
-  List<String> items = [
-    '1.20',
-    '2.20',
-    '3.20',
-    '4.20',
-    '5.20',
-    '6.20',
-    '7.20',
-    '8.20',
-    '1.20',
-    '2.20',
-    '3.20',
-    '4.20',
-    '5.20',
-    '6.20',
-    '7.20',
-    '8.20'
-  ];
+  // List<String> items = [
+  //   '1.20',
+  //   '2.20',
+  //   '3.20',
+  //   '4.20',
+  //   '5.20',
+  //   '6.20',
+  //   '7.20',
+  //   '8.20',
+  //   '1.20',
+  //   '2.20',
+  //   '3.20',
+  //   '4.20',
+  //   '5.20',
+  //   '6.20',
+  //   '7.20',
+  //   '8.20'
+  // ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    dateTimes = getDateTime();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -200,166 +210,74 @@ class CustomOverviewState extends State<CustomOverview> {
                     height: h * 0.12,
                   )),
               SizedBox(width: w * 0.08),
+              SizedBox(
+                height: h * 0.01,
+              ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(right: w * 0.07),
-                    height: h * 0.005,
-                    width: w * 0.12,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.rectangle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.red,
-                              blurRadius: 2.0,
-                              spreadRadius: 3.0)
-                        ]),
-                  ),
-                  SizedBox(
-                    height: h * 0.01,
-                  ),
-                  Container(
-                      width: w * 0.4,
-                      height: h * 0.08,
-                      margin: EdgeInsets.only(right: 32),
-                      decoration: BoxDecoration(
-                        // color: Colors.green,
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          style: BorderStyle.solid,
-                          color: Colors.green,
-                          width: 3,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 5.0),
-                        child: TextField(
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                    color: Colors.blueAccent,
-                                    blurRadius: 20,
-                                    offset: Offset(0, 2))
-                              ],
-                              letterSpacing: 2,
-                              color: Colors.white,
-                              fontFamily: "Segoe"),
-                          controller: _controller,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            suffixIcon: Container(
-                              child:
-// dropdown + text(vikas edit)
-                                  /* PopupMenuButton<String>(
-                                      color: Colors.transparent,
-                                      icon: const Icon(Icons.arrow_drop_down,color: Colors.white,),
-                                      onSelected: (String value) {
-                                        _controller.text = value;
-                                      },
-                                      shape: RoundedRectangleBorder(
-                                          side: BorderSide(
-                                              width: 1,
-                                              color: Colors.white
-                                          ),
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(20.0),
-                                        ),
-                                      ),
-                                      itemBuilder: (BuildContext context) {
-                                        return items
-                                            .map<PopupMenuItem<String>>((String value) {
-                                          return new PopupMenuItem(
-                                              child: new Text(value,style:TextStyle(
-                                                  fontSize: 15,
-                                                  letterSpacing: 2,
-                                                  color: Colors.white,
-                                                  fontFamily: "Segoe") ,), value: value);
-                                        }).toList();
-                                      },
-                                    ),*/
-                                  DropdownButtonHideUnderline(
-                                child: DropdownButton(
-                                  //itemHeight:20,
-                                  menuMaxHeight: 150,
-                                  icon: const Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.white,
-                                  ),
-                                  items: items
-                                      .map((e) => DropdownMenuItem(
-                                            child: Container(
-                                              // color: Colors.transparent,
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                e,
-                                                style: TextStyle(fontSize: 20),
-                                              ),
-                                            ),
-                                            value: e,
-                                          ))
-                                      .toList(),
-                                  onChanged: (String? newValue) {
-                                    setState(() {
-                                      _controller.text = newValue!;
-                                    });
-                                  },
-                                  //value: _currency,
-                                  /*onSelected: (String value) {
-                                          _controller.text = value;
-                                        },*/
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                    width: w * 0.3,
+                    height: h * 0.004,
+                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                      BoxShadow(
+                        color: Colors.orange,
+                        spreadRadius: 5,
+                        blurRadius: 5,
                       )
-                      /*Text(
-                                  "2:30",
-                                  style: TextStyle(
-                                      fontSize: 32,
-                                      letterSpacing: 2,
-                                      color: Colors.white,
-                                      fontFamily: "Segoe"),
-                                ),*/
-
+                    ]),
+                  ),
+                  SizedBox(height: h * 0.02),
+                  Container(
+                    // key: dateKey,
+                    width: w * 0.5,
+                    height: h * 0.08,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      // borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10),
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10)),
+                      border: Border.all(color: Colors.green, width: 3),
+                    ),
+                    child: SizedBox(
+                      height: h * 0.2,
+                      child: CupertinoTheme(
+                        data: CupertinoThemeData(
+                            // barBackgroundColor: Colors.transparent
+                            // primaryColor: Colors.red,
+                            textTheme: CupertinoTextThemeData(
+                                dateTimePickerTextStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                    shadows: [
+                              Shadow(
+                                  color: Colors.blue,
+                                  blurRadius: 2,
+                                  offset: Offset(0, 2))
+                            ]))),
+                        // ss
+                        child: CupertinoDatePicker(
+                          backgroundColor: Colors.transparent,
+                          initialDateTime: dateTimes,
+                          mode: CupertinoDatePickerMode.time,
+                          use24hFormat: true,
+                          minuteInterval: 10,
+                          // onDateTimeChanged: (dateTime) =>
+                          //     setState(() => this.dateTimes = dateTime),
+                          onDateTimeChanged: (dateTime) {
+                            setState(() {
+                              this.dateTimes = dateTime;
+                            });
+                            // _overView();
+                          },
+                        ),
                       ),
-                  // Container(
-                  //   margin: EdgeInsets.only(right: 32),
-                  //   decoration: BoxDecoration(
-                  //     shape: BoxShape.rectangle,
-                  //     borderRadius: BorderRadius.circular(12),
-                  //     border: Border.all(
-                  //       style: BorderStyle.solid,
-                  //       color: PrimarySilver,
-                  //       width: 3,
-                  //     ),
-                  //   ),
-                  //   child: Padding(
-                  //     padding: const EdgeInsets.symmetric(
-                  //         horizontal: 12.0, vertical: 4),
-                  //     child: BorderedText(
-                  //       strokeWidth: 2.0,
-                  //       strokeColor: Colors.blue,
-                  //       child: Text(
-                  //         widget.time,
-                  //         style: TextStyle(
-                  //             fontSize: 28,
-                  //             letterSpacing: 2,
-                  //             color: Colors.white,
-                  //             fontFamily: "Segoe"
-                  //             /* foreground: Paint()
-                  //             ..style = PaintingStyle.stroke
-                  //             ..strokeWidth = 2
-                  //             ..color = PrimarySilver,*/
-                  //             ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -409,5 +327,10 @@ class CustomOverviewState extends State<CustomOverview> {
         )
       ],
     );
+  }
+
+  DateTime getDateTime() {
+    final now = DateTime.now();
+    return DateTime(now.year, now.month, now.day, now.hour, 30);
   }
 }

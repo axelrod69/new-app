@@ -31,6 +31,39 @@ class ProfilePageState extends State<ProfilePage> {
 
     // TODO: implement build
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+      floatingActionButton: Container(
+        width: double.infinity,
+        height: height * 0.15,
+        // color: Colors.yellow,
+        child: Stack(
+          children: [
+            // Container(
+            //     width: w * 0.28,
+            //     height: h * 0.15,
+            //     child: Center(
+            //         child: Image.asset("assets/images/logo-with-bg.png")),
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.only(
+            //         bottomRight: Radius.circular(w * 0.25),
+            //       ),
+            //     )),
+            // topIcon(context)
+            Container(
+              width: width * 0.28,
+              height: height * 0.15,
+              // color: Colors.red,
+              // padding: EdgeInsets.only(left: w * 0.01),
+              // margin: EdgeInsets.only(left: w * 0.1),
+            ),
+            Positioned(
+              child: Container(
+                  margin: EdgeInsets.only(left: width * 0.03),
+                  child: Image.asset("assets/images/logo-with-bg.png")),
+            )
+          ],
+        ),
+      ),
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -72,10 +105,11 @@ class ProfilePageState extends State<ProfilePage> {
                           fit: BoxFit.cover,
                           image: AssetImage('assets/images/shape_01.png'))),
                 ),
-                Positioned(
-                    child: Image.asset(
-                  'assets/images/logo-with-bg.png',
-                )),
+                // Container(width: width * 0.28, height: height * 0.15),
+                // Positioned(
+                //   child: Image.asset("assets/images/logo-with-bg.png"),
+                // ),
+
                 Positioned(
                   // top: height * 0.09,
                   top: height * 0.065,
