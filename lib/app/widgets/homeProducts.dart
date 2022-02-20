@@ -213,19 +213,15 @@ class _StoryScreenState extends State<StoryScreen>
           //   onTap: () => Get.toNamed("/slot-machine"),
           //   child: Center(child: SvgPicture.asset("assets/svgs/slot-icon.svg")),
           // ),
-          Blur(
-            colorOpacity: 0.01,
-            blur: blurValue,
-            child: Positioned(
-              right: width * 0.02,
-              child: Container(
-                height: height * 0.2,
-                width: width * 0.3,
-                // color: Colors.red,
-                child: InkWell(
-                    onTap: () => Get.toNamed("/slot-machine"),
-                    child: SvgPicture.asset('assets/svgs/slot-icon.svg')),
-              ),
+          Positioned(
+            right: width * 0.02,
+            child: Container(
+              height: height * 0.2,
+              width: width * 0.3,
+              // color: Colors.red,
+              child: InkWell(
+                  onTap: () => Get.toNamed("/slot-machine"),
+                  child: SvgPicture.asset('assets/svgs/slot-icon.svg')),
             ),
           ),
           Padding(
